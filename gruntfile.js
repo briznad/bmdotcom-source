@@ -17,7 +17,8 @@ module.exports = function(grunt) {
             coffeeInput: 'assets/coffee/',
             jsRawIO: 'assets/js/',
             cssOutput: 'built/assets/css/',
-            jsOutput: 'built/assets/js/'
+            jsOutput: 'built/assets/js/',
+            bower: 'bower_components/'
         },
 
         clean: {
@@ -38,7 +39,11 @@ module.exports = function(grunt) {
         sass: {
             prod: {
                 options: {
-                    includePaths: ['<%= config.sassInput %>*/'],
+                    sourceMap: true,
+                    includePaths: [
+                        '<%= config.bower %>',
+                        '<%= config.sassInput %>*/'
+                    ],
                     outputStyle: 'nested'
                 },
                 files: {
@@ -135,11 +140,11 @@ module.exports = function(grunt) {
             },
             js: {
                 src: [
-                    '<%= config.jsRawIO %>plugins/jquery-*.js', // jQuery must be the first plugin loaded, as it's depended by jQuery plugins as well as Davis.js
-                    '<%= config.jsRawIO %>plugins/jquery.*.js',
-                    '<%= config.jsRawIO %>plugins/davis.js',
-                    '<%= config.jsRawIO %>plugins/underscore.js',
-                    '<%= config.jsRawIO %>plugins/parallax.min.js',
+                    // list js dependencies (managed via bower)
+                    '<%= config.bower %>jquery/dist/jquery.js', // jQuery must be the first plugin loaded, as it's depended by jQuery plugins as well as Davis.js
+                    '<%= config.bower %>davis/davis.js',
+                    '<%= config.bower %>underscore/underscore.js',
+                    // custom app js
                     '<%= config.jsRawIO %>*.js'
                 ],
                 dest: '<%= config.jsOutput %>do.js'

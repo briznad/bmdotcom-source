@@ -1,7 +1,7 @@
 /* imports */
 
-// plugins
-@import "plugins/normalize";
+// plugins (managed via bower)
+@import "normalize-scss/normalize";
 
 // helpers
 @import "helpers/fonts";
