@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900|Special+Elite|Averia+Gruesa+Libre);
+
 @font-face {
   font-family: 'fontello';
   src: url('/assets/fonts/fontello.eot?88749903');
@@ -9,13 +11,12 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'apercuregular';
-  src: url('/assets/fonts/apercu_regular-webfont.eot');
-  src: url('/assets/fonts/apercu_regular-webfont.eot?#iefix') format('embedded-opentype'),
-       url('/assets/fonts/apercu_regular-webfont.woff') format('woff'),
-       url('/assets/fonts/apercu_regular-webfont.ttf') format('truetype'),
-       url('/assets/fonts/apercu_regular-webfont.svg#apercuregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+// font variables
+$font-base-size: 14px;
+
+$font-normal: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$font-header: 'Special Elite', serif;
+// $font-header: 'Averia Gruesa Libre', serif;
+
+$font-icon: 'fontello';

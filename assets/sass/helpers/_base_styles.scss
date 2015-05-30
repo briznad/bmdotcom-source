@@ -12,27 +12,19 @@ figure {
 
 /* /helper styles */
 
-/* really simplistic grid system */
+/* grid styles */
 
 [class*="-row"] {
 	@extend .clearfix;
 }
 
-.left-content {
-	float: left;
-}
-
-.right-content {
-	float: right;
-}
-
-/* /really simplistic grid system */
+/* /grid styles */
 
 /* dropdown menu system */
 
 // if dropdown is a list, display children li's as block
 .dropdown[class*="-list"] {
-	li {
+	> li {
 		display: block;
 	}
 }

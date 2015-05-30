@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         sass: {
             prod: {
                 options: {
-                    sourceMap: true,
+                    sourceMap: false,
                     includePaths: [
                         '<%= config.bower %>',
                         '<%= config.sassInput %>*/'
@@ -181,6 +181,9 @@ module.exports = function(grunt) {
         }
     });
 
-    // default task.
+    // default task
     grunt.registerTask('default', ['clean', 'coffeelint', 'coffee', 'jshint', 'concat', 'uglify', 'sass', 'autoprefixer', 'cssmin']);
+
+    // css task
+    grunt.registerTask('css', ['sass', 'autoprefixer', 'cssmin']);
 };

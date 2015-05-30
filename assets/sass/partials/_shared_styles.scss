@@ -6,10 +6,12 @@ html {
 }
 
 body {
-	width: 1000px;
+	width: 100%;
+	max-width: 1000px;
 	margin: 0 auto;
-	padding: em(40) em(20);
+	padding: em(60) em(20);
 	-webkit-font-smoothing: antialiased;
+	font-size: 14px;
 	font-family: $font-normal;
 	font-weight: 300;
 	color: $color-text;
@@ -25,13 +27,13 @@ a {
 }
 
 p {
-	font-size: em(12);
 	line-height: 1.5em;
 	color: $color-text;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
+	font-family: $font-header;
 }
 
 input {
@@ -60,20 +62,6 @@ dd {
 li {
 	list-style: none;
 	display: inline-block;
-}
-
-.top-row,
-.bottom-row {
-	letter-spacing: 0.25em;
-}
-
-.primary-media {
-  position: relative;
-}
-
-.primary-image {
-	width: 100%;
-	height: auto;
 }
 
 /* /general page styles */

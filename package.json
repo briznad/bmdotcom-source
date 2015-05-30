@@ -1,5 +1,5 @@
 {
-  "name": "aWindowNYC-source",
+  "name": "bmdotcom",
   "version": "1.0.0",
   "engines": {
     "node": ">= 0.10.0"
@@ -16,12 +16,28 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-sass": "^0.14.0",
-    "matchdep": "~0.1.1"
+    "matchdep": "~0.1.1",
+    "grunt-sass": "~1.0.0"
   },
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/briznad/aWindowNYC-source.git"
-  }
+    "url": "git://github.com/briznad/bmdotcom-source.git"
+  },
+  "description": "[aWindow](http://www.awindow.com/) ======",
+  "bugs": {
+    "url": "https://github.com/briznad/aWindowNYC-source/issues"
+  },
+  "homepage": "https://github.com/briznad/aWindowNYC-source#readme",
+  "main": "gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "brad",
+    "mallow",
+    "bradmallow"
+  ],
+  "author": "Brad Mallow <brad.mallow@gmail.com>",
+  "license": "MIT"
 }
