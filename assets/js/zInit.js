@@ -1,13 +1,13 @@
-var aWindow;
+var bmdotcom;
 
-aWindow = aWindow || {};
+bmdotcom = bmdotcom || {};
 
-aWindow.init = (function() {
+bmdotcom.init = (function() {
   'use strict';
-  aWindow.template.init(function() {
-    return aWindow.modelBuildr.init(function() {
-      return aWindow.router.init();
+  bmdotcom.template.init(function() {
+    return bmdotcom.modelBuildr.init(function() {
+      return bmdotcom.router.init();
     });
   });
-  return aWindow.lightbox.init();
+  return bmdotcom.tracking.init();
 })();

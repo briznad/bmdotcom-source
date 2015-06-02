@@ -1,17 +1,14 @@
-aWindow = aWindow or {}
+bmdotcom = bmdotcom or {}
 
-aWindow.init = do ->
+bmdotcom.init = do ->
   'use strict'
 
   # load templates
-  aWindow.template.init ->
+  bmdotcom.template.init ->
     # retrieve json and build document model
-    aWindow.modelBuildr.init ->
+    bmdotcom.modelBuildr.init ->
       # load router controller
-      do aWindow.router.init
+      do bmdotcom.router.init
 
   # init GA tracking
-  # do aWindow.tracking.init
-
-  # init lightbox
-  do aWindow.lightbox.init
+  do bmdotcom.tracking.init

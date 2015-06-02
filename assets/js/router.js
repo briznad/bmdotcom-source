@@ -1,51 +1,41 @@
-var aWindow;
+var bmdotcom;
 
-aWindow = aWindow || {};
+bmdotcom = bmdotcom || {};
 
-aWindow.router = (function() {
+bmdotcom.router = (function() {
   'use strict';
-  var init, initRoutes, _testHash;
+  var init, _initRoutes, _testHash;
   init = function(callback) {
     if (callback == null) {
       callback = function() {};
     }
-    initRoutes();
+    _initRoutes();
     _testHash();
     return callback();
   };
-  initRoutes = function() {
+  _initRoutes = function() {
     var routes;
     return routes = new Davis(function() {
       this.configure(function(config) {
-        return config.generateRequestOnPageLoad = true;
+        return config.generateRequestOnPageLoad = false;
       });
-      this.before(aWindow.updateView.beforeUpdate);
+      this.before(bmdotcom.updateView.beforeUpdate);
       this.after(function(req) {
-        return aWindow.tracking.trackPage(req.path);
+        return bmdotcom.tracking.trackPage(req.path);
       });
       this.get('/', function() {
-        return aWindow.updateView.update('meta', 'root');
+        return bmdotcom.updateView.update('root');
       });
       this.get('/index.html', function() {
-        return aWindow.updateView.update('meta', 'root');
+        return bmdotcom.updateView.update('root');
       });
-      this.get('/:titleNormalized', function(req) {
-        return aWindow.updateView.update('meta', req.params.titleNormalized, !req.queryString ? false : {
-          title: req.params.title
-        });
+      this.get('/:pageTitle', function(req) {
+        return bmdotcom.updateView.update(req.params.pageTitle);
       });
-      this.get(':titleNormalized', function(req) {
-        return aWindow.updateView.update('meta', req.params.titleNormalized, !req.queryString ? false : {
-          title: req.params.title
-        });
+      this.get(':pageTitle', function(req) {
+        return bmdotcom.updateView.update(req.params.pageTitle);
       });
-      this.get('/:type/:titleNormalized', function(req) {
-        return aWindow.updateView.update(req.params.type, req.params.titleNormalized);
-      });
-      this.get('/item/:parentItem/:childItem', function(req) {
-        return aWindow.updateView.update('sub-item', req.params.childItem);
-      });
-      return this.post('/contact', aWindow.contact.send);
+      return this.post('/contact', bmdotcom.contact.send);
     });
   };
   _testHash = function() {

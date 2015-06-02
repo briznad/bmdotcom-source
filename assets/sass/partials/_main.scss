@@ -1,11 +1,38 @@
 // main / dynamic container
 .main-container {
+	@extend .clearfix;
 
+	min-height: em(400);
 }
 
 // root page welcome text
 .welcome-text {
-	max-width: 80%;
-	margin: 0 auto;
-	font-size: 1.5em;
+	position: relative;
+	float: right;
+	max-width: 45%;
+	font-size: 1.8em;
+
+	p:last-child {
+		max-width: 75%;
+
+		&:after {
+		  content: '\2935';
+		  font-size: 2em;
+		  position: absolute;
+		  bottom: -0.3em;
+			right: 1.3em;
+			transform-origin: top left;
+			animation: arrow-grow 500ms ease 1500ms 6 alternate;
+		}
+	}
+}
+
+@keyframes arrow-grow {
+	30% {
+		transform: none;
+	}
+
+	to {
+  	transform: scale(1.15) rotate(7deg);
+  }
 }

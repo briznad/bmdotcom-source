@@ -1,6 +1,6 @@
-aWindow = aWindow or {}
+bmdotcom = bmdotcom or {}
 
-aWindow.contact = do ->
+bmdotcom.contact = do ->
   'use strict'
 
   send = (req) ->
@@ -10,15 +10,13 @@ aWindow.contact = do ->
 
     $.ajax
       type: 'POST'
-      url: '//formspree.io/awindownyc@gmail.com'
+      url: '//formspree.io/bradmallow@gmail.com'
       data: req.params
       dataType: 'json'
       complete: _afterSend[formType]
 
   _establishFormType = (typeOfContact) ->
     switch typeOfContact
-      when 'Subscribe to Newsletter'
-        'newsletterSubscribe'
       when 'Contact Form Message'
         'contactPage'
       else
@@ -28,29 +26,20 @@ aWindow.contact = do ->
     # email validation regex taken from http://stackoverflow.com/a/46181
     emailPattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-    newsletterSubscribe: (formFields) ->
+    contactPage: (formFields) ->
       if _validate.emailPattern.test formFields.newsletterEmail
         true
 
       else
-        aWindow.modal.open 'Please enter a valid e-mail address.',
+        bmdotcom.modal.open 'Please enter a valid e-mail address.',
           displayDuration   : 3000
           additionalClasses : ['contact-modal']
 
         false
 
-    contactPage: ->
-      true
-
   _afterSend =
-    newsletterSubscribe: ->
-      aWindow.modal.open 'Thank you for signing up for our newsletter.',
-        reloadPage        : true
-        displayDuration   : 3000
-        additionalClasses : ['contact-modal']
-
     contactPage: ->
-      aWindow.modal.open 'Thank you for contacting us and expressing interest to learn more about the project. We will respond shortly.',
+      bmdotcom.modal.open 'Thank you for contacting us and expressing interest to learn more about the project. We will respond shortly.',
         reloadPage        : true
         additionalClasses : ['contact-modal']
 

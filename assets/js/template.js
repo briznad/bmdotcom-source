@@ -1,8 +1,8 @@
-var aWindow;
+var bmdotcom;
 
-aWindow = aWindow || {};
+bmdotcom = bmdotcom || {};
 
-aWindow.template = (function() {
+bmdotcom.template = (function() {
   'use strict';
   var init, _processTemplates;
   init = function(callback) {
@@ -15,14 +15,14 @@ aWindow.template = (function() {
       return _processTemplates(data, callback);
     });
     return request.fail(function(data) {
-      return _processTemplates(aWindow.dummyData().template(), callback);
+      return callback();
     });
   };
   _processTemplates = function(response, callback) {
     var $templates;
     $templates = $(response).filter('script[type="text/html"]');
     $templates.each(function() {
-      return aWindow.template[$(this).attr('id')] = _.template($(this).html());
+      return bmdotcom.template[$(this).attr('id')] = _.template($(this).html());
     });
     return callback();
   };

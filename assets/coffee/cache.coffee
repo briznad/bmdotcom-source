@@ -1,6 +1,6 @@
-aWindow = aWindow or {}
+bmdotcom = bmdotcom or {}
 
-aWindow.cache =
+bmdotcom.cache =
 
   $window           : $(window)
   $document         : $(document)

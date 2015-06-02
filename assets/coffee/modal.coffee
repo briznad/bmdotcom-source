@@ -1,6 +1,6 @@
-aWindow = aWindow or {}
+bmdotcom = bmdotcom or {}
 
-aWindow.modal = do ->
+bmdotcom.modal = do ->
   'use strict'
 
   options =
@@ -16,7 +16,7 @@ aWindow.modal = do ->
     options = _.extend options, opts or {},
       modalID: _.uniqueId 'modal-'
 
-    aWindow.cache.$body.append aWindow.template.modalModule
+    bmdotcom.cache.$body.append bmdotcom.template.modalModule
       modalID           : options.modalID
       modalContent      : content
       additionalClasses : if _.isArray(options.additionalClasses) then options.additionalClasses.join(' ') else options.additionalClasses
@@ -27,7 +27,7 @@ aWindow.modal = do ->
     options.timeoutID = setTimeout _destroyModal, options.displayDuration if options.displayDuration
 
   _registerEvents = ->
-    aWindow.cache.$body
+    bmdotcom.cache.$body
       .off('click.' + options.modalID)
       .on('click.' + options.modalID, '#' + options.modalID, _destroyModal)
 

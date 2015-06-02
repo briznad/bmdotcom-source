@@ -1,6 +1,6 @@
-aWindow = aWindow or {}
+bmdotcom = bmdotcom or {}
 
-aWindow.modelBuildr = do ->
+bmdotcom.modelBuildr = do ->
   'use strict'
 
   init = (callback) ->
@@ -24,19 +24,19 @@ aWindow.modelBuildr = do ->
 
     # uh-oh, something went wrong
     request.fail (data) ->
-      aWindow.model = do aWindow.tempData
+      bmdotcom.model = do bmdotcom.tempData
 
       # all done
       do callback
 
   _createCleanModel = (data, callback) ->
 
-    # add model object to aWindow
-    aWindow.model = {}
+    # add model object to bmdotcom
+    bmdotcom.model = {}
 
     if data.feed.entry
       # create settings object
-      aWindow.model.settings = {}
+      bmdotcom.model.settings = {}
 
       # go through each object in the raw input, clean it, and add it to the model object
       _.each data.feed.entry, _sortRawInput
@@ -44,7 +44,7 @@ aWindow.modelBuildr = do ->
       # after building the model object spice up the data
       do _postProcessing
     else
-      aWindow.model =
+      bmdotcom.model =
         status: 'error'
         description: 'no "entry" object returned'
         data: data
@@ -55,13 +55,13 @@ aWindow.modelBuildr = do ->
     key = obj.gsx$newpagetype.$t
 
     # make sure the correct container array exists in the model
-    aWindow.model[key] = aWindow.model[key] or {}
+    bmdotcom.model[key] = bmdotcom.model[key] or {}
 
     # temp data
     tempCleanObj = _.extend _processGeneral(obj, key), _processSpecific(obj, key)
 
     # after cleaning things up save to the model
-    aWindow.model[key][tempCleanObj.normalized] = tempCleanObj
+    bmdotcom.model[key][tempCleanObj.normalized] = tempCleanObj
 
     # add meta list page
     _addMetaList tempCleanObj
@@ -174,14 +174,14 @@ aWindow.modelBuildr = do ->
   # add meta list page for most objects
   _addMetaList = (cleanObj) ->
     # ensure meta exists
-    aWindow.model.meta = aWindow.model.meta or {}
+    bmdotcom.model.meta = bmdotcom.model.meta or {}
 
     objPlural = cleanObj.type + 's'
 
     # don't create meta list if:
     #   type is "meta" or "sub-item"
     #   meta list already exists
-    if ['meta', 'sub-item'].indexOf(cleanObj.type) isnt -1 or typeof aWindow.model.meta[objPlural] is 'object' then return false
+    if ['meta', 'sub-item'].indexOf(cleanObj.type) isnt -1 or typeof bmdotcom.model.meta[objPlural] is 'object' then return false
 
     _addMetaPage objPlural, 'This is the ' + _uppercasify(objPlural) + ' list.',
       metaListType: cleanObj.type
@@ -193,7 +193,7 @@ aWindow.modelBuildr = do ->
     if !description?
       description = 'This is the ' + properSlug + ' page.'
 
-    aWindow.model.meta[slug] = _.extend
+    bmdotcom.model.meta[slug] = _.extend
       type:         'meta'
       normalized:   slug
       title:        properSlug
@@ -225,36 +225,36 @@ aWindow.modelBuildr = do ->
       metaListType: 'item'
       displayOrder: []
 
-    _.each aWindow.model.meta, (value, key) ->
+    _.each bmdotcom.model.meta, (value, key) ->
       # if this is a list page and displayOrder has yet to be defined
       if value.metaListType and !value.displayOrder
-        value.displayOrder = do _.keys(aWindow.model[value.metaListType]).sort
+        value.displayOrder = do _.keys(bmdotcom.model[value.metaListType]).sort
 
     # work on sub-items
-    _.each aWindow.model['sub-item'], (value, key) ->
+    _.each bmdotcom.model['sub-item'], (value, key) ->
       # figure out which parent item it belongs to
-      aWindow.model.item[value.parentItem]['sub-items'].push key
+      bmdotcom.model.item[value.parentItem]['sub-items'].push key
 
       # figure out this sub-item's edition
-      value.edition = aWindow.model.item[value.parentItem].edition
+      value.edition = bmdotcom.model.item[value.parentItem].edition
 
       # grab creator value from parent item
-      value.creator = aWindow.model.item[value.parentItem].creator
+      value.creator = bmdotcom.model.item[value.parentItem].creator
 
       # add sub-item to creator's list of items
-      aWindow.model.collaborator[value.creator].items.push key
+      bmdotcom.model.collaborator[value.creator].items.push key
 
     # work on items
-    _.each aWindow.model.item, (value, key) ->
+    _.each bmdotcom.model.item, (value, key) ->
       # determine if this is the entire gallery item
       value.galleryItem = if /^gallery/.test(key) then true else false
 
       # collate the following lists: items > editions, items > collaborator, collaborators > editions
-      aWindow.model.edition[value.edition].items.push key
+      bmdotcom.model.edition[value.edition].items.push key
 
       if value.creator
         # collaborators > edition
-        aWindow.model.edition[value.edition].collaborators.push value.creator
+        bmdotcom.model.edition[value.edition].collaborators.push value.creator
 
       # if this item has sub-items, do more stuff
       if value['sub-items'].length
@@ -265,7 +265,7 @@ aWindow.modelBuildr = do ->
         priceRange = []
 
         _.each value['sub-items'], (subItem, key) ->
-          priceRange.push parseInt aWindow.model['sub-item'][subItem].price.replace '$', ''
+          priceRange.push parseInt bmdotcom.model['sub-item'][subItem].price.replace '$', ''
 
         do priceRange.sort
 
@@ -273,26 +273,26 @@ aWindow.modelBuildr = do ->
 
         # if unset, assign purchase page media based on 1st sub-item
         unless value.purchasePageMedia.source
-          value.purchasePageMedia = aWindow.model['sub-item'][value['sub-items'][0]].purchasePageMedia
+          value.purchasePageMedia = bmdotcom.model['sub-item'][value['sub-items'][0]].purchasePageMedia
 
         # collate meta shop page sub-item list
-        aWindow.model.meta.shop.displayOrder = aWindow.model.meta.shop.displayOrder.concat value['sub-items']
+        bmdotcom.model.meta.shop.displayOrder = bmdotcom.model.meta.shop.displayOrder.concat value['sub-items']
 
       else
         # collate meta shop page item list
-        aWindow.model.meta.shop.displayOrder.push key
+        bmdotcom.model.meta.shop.displayOrder.push key
 
         if value.creator
           # items > collaborator
-          aWindow.model.collaborator[value.creator].items.push key
+          bmdotcom.model.collaborator[value.creator].items.push key
 
     # sort meta shop page item / sub-item list
-    do aWindow.model.meta.shop.displayOrder.sort
+    do bmdotcom.model.meta.shop.displayOrder.sort
 
     # work on the editions
-    _.each aWindow.model.edition, (value, key) ->
+    _.each bmdotcom.model.edition, (value, key) ->
       # save the last processed edition as the current edition
-      aWindow.model.settings.currentEdition = key
+      bmdotcom.model.settings.currentEdition = key
 
       # sort collated lists
       do value.collaborators.sort
@@ -302,7 +302,7 @@ aWindow.modelBuildr = do ->
       value.collaborators = _.uniq value.collaborators, true
 
     # work on the collaborators
-    _.each aWindow.model.collaborator, (value, key) ->
+    _.each bmdotcom.model.collaborator, (value, key) ->
       # sort collated lists
       do value.items.sort
 

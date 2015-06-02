@@ -1,8 +1,8 @@
-var aWindow;
+var bmdotcom;
 
-aWindow = aWindow || {};
+bmdotcom = bmdotcom || {};
 
-aWindow.modal = (function() {
+bmdotcom.modal = (function() {
   'use strict';
   var init, options, _destroyModal, _redirect, _registerEvents;
   options = {
@@ -19,7 +19,7 @@ aWindow.modal = (function() {
     options = _.extend(options, opts || {}, {
       modalID: _.uniqueId('modal-')
     });
-    aWindow.cache.$body.append(aWindow.template.modalModule({
+    bmdotcom.cache.$body.append(bmdotcom.template.modalModule({
       modalID: options.modalID,
       modalContent: content,
       additionalClasses: _.isArray(options.additionalClasses) ? options.additionalClasses.join(' ') : options.additionalClasses,
@@ -31,7 +31,7 @@ aWindow.modal = (function() {
     }
   };
   _registerEvents = function() {
-    return aWindow.cache.$body.off('click.' + options.modalID).on('click.' + options.modalID, '#' + options.modalID, _destroyModal);
+    return bmdotcom.cache.$body.off('click.' + options.modalID).on('click.' + options.modalID, '#' + options.modalID, _destroyModal);
   };
   _destroyModal = function(e) {
     if ((e != null) && $(e.target).is('.modal-close, .modal-overlay')) {

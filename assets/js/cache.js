@@ -1,8 +1,8 @@
-var aWindow;
+var bmdotcom;
 
-aWindow = aWindow || {};
+bmdotcom = bmdotcom || {};
 
-aWindow.cache = {
+bmdotcom.cache = {
   $window: $(window),
   $document: $(document),
   $html: $(document.documentElement),

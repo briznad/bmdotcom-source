@@ -1,8 +1,8 @@
-var aWindow;
+var bmdotcom;
 
-aWindow = aWindow || {};
+bmdotcom = bmdotcom || {};
 
-aWindow.modelBuildr = (function() {
+bmdotcom.modelBuildr = (function() {
   'use strict';
   var init, _addMetaList, _addMetaPage, _cleanArrayify, _createCleanModel, _getData, _internalExternalImg, _lineBreakify, _postProcessing, _processAttribution, _processGeneral, _processMedia, _processSpecific, _slugify, _sortRawInput, _uppercasify;
   init = function(callback) {
@@ -20,18 +20,18 @@ aWindow.modelBuildr = (function() {
       return callback();
     });
     return request.fail(function(data) {
-      aWindow.model = aWindow.tempData();
+      bmdotcom.model = bmdotcom.tempData();
       return callback();
     });
   };
   _createCleanModel = function(data, callback) {
-    aWindow.model = {};
+    bmdotcom.model = {};
     if (data.feed.entry) {
-      aWindow.model.settings = {};
+      bmdotcom.model.settings = {};
       _.each(data.feed.entry, _sortRawInput);
       return _postProcessing();
     } else {
-      return aWindow.model = {
+      return bmdotcom.model = {
         status: 'error',
         description: 'no "entry" object returned',
         data: data
@@ -41,9 +41,9 @@ aWindow.modelBuildr = (function() {
   _sortRawInput = function(obj) {
     var key, tempCleanObj;
     key = obj.gsx$newpagetype.$t;
-    aWindow.model[key] = aWindow.model[key] || {};
+    bmdotcom.model[key] = bmdotcom.model[key] || {};
     tempCleanObj = _.extend(_processGeneral(obj, key), _processSpecific(obj, key));
-    aWindow.model[key][tempCleanObj.normalized] = tempCleanObj;
+    bmdotcom.model[key][tempCleanObj.normalized] = tempCleanObj;
     return _addMetaList(tempCleanObj);
   };
   _processGeneral = function(raw, key) {
@@ -155,9 +155,9 @@ aWindow.modelBuildr = (function() {
   };
   _addMetaList = function(cleanObj) {
     var objPlural;
-    aWindow.model.meta = aWindow.model.meta || {};
+    bmdotcom.model.meta = bmdotcom.model.meta || {};
     objPlural = cleanObj.type + 's';
-    if (['meta', 'sub-item'].indexOf(cleanObj.type) !== -1 || typeof aWindow.model.meta[objPlural] === 'object') {
+    if (['meta', 'sub-item'].indexOf(cleanObj.type) !== -1 || typeof bmdotcom.model.meta[objPlural] === 'object') {
       return false;
     }
     return _addMetaPage(objPlural, 'This is the ' + _uppercasify(objPlural) + ' list.', {
@@ -173,7 +173,7 @@ aWindow.modelBuildr = (function() {
     if (description == null) {
       description = 'This is the ' + properSlug + ' page.';
     }
-    return aWindow.model.meta[slug] = _.extend({
+    return bmdotcom.model.meta[slug] = _.extend({
       type: 'meta',
       normalized: slug,
       title: properSlug,
@@ -193,51 +193,51 @@ aWindow.modelBuildr = (function() {
       metaListType: 'item',
       displayOrder: []
     });
-    _.each(aWindow.model.meta, function(value, key) {
+    _.each(bmdotcom.model.meta, function(value, key) {
       if (value.metaListType && !value.displayOrder) {
-        return value.displayOrder = _.keys(aWindow.model[value.metaListType]).sort();
+        return value.displayOrder = _.keys(bmdotcom.model[value.metaListType]).sort();
       }
     });
-    _.each(aWindow.model['sub-item'], function(value, key) {
-      aWindow.model.item[value.parentItem]['sub-items'].push(key);
-      value.edition = aWindow.model.item[value.parentItem].edition;
-      value.creator = aWindow.model.item[value.parentItem].creator;
-      return aWindow.model.collaborator[value.creator].items.push(key);
+    _.each(bmdotcom.model['sub-item'], function(value, key) {
+      bmdotcom.model.item[value.parentItem]['sub-items'].push(key);
+      value.edition = bmdotcom.model.item[value.parentItem].edition;
+      value.creator = bmdotcom.model.item[value.parentItem].creator;
+      return bmdotcom.model.collaborator[value.creator].items.push(key);
     });
-    _.each(aWindow.model.item, function(value, key) {
+    _.each(bmdotcom.model.item, function(value, key) {
       var priceRange;
       value.galleryItem = /^gallery/.test(key) ? true : false;
-      aWindow.model.edition[value.edition].items.push(key);
+      bmdotcom.model.edition[value.edition].items.push(key);
       if (value.creator) {
-        aWindow.model.edition[value.edition].collaborators.push(value.creator);
+        bmdotcom.model.edition[value.edition].collaborators.push(value.creator);
       }
       if (value['sub-items'].length) {
         value['sub-items'].sort();
         priceRange = [];
         _.each(value['sub-items'], function(subItem, key) {
-          return priceRange.push(parseInt(aWindow.model['sub-item'][subItem].price.replace('$', '')));
+          return priceRange.push(parseInt(bmdotcom.model['sub-item'][subItem].price.replace('$', '')));
         });
         priceRange.sort();
         value.price = '$' + priceRange.shift() + ' - $' + priceRange.pop();
         if (!value.purchasePageMedia.source) {
-          value.purchasePageMedia = aWindow.model['sub-item'][value['sub-items'][0]].purchasePageMedia;
+          value.purchasePageMedia = bmdotcom.model['sub-item'][value['sub-items'][0]].purchasePageMedia;
         }
-        return aWindow.model.meta.shop.displayOrder = aWindow.model.meta.shop.displayOrder.concat(value['sub-items']);
+        return bmdotcom.model.meta.shop.displayOrder = bmdotcom.model.meta.shop.displayOrder.concat(value['sub-items']);
       } else {
-        aWindow.model.meta.shop.displayOrder.push(key);
+        bmdotcom.model.meta.shop.displayOrder.push(key);
         if (value.creator) {
-          return aWindow.model.collaborator[value.creator].items.push(key);
+          return bmdotcom.model.collaborator[value.creator].items.push(key);
         }
       }
     });
-    aWindow.model.meta.shop.displayOrder.sort();
-    _.each(aWindow.model.edition, function(value, key) {
-      aWindow.model.settings.currentEdition = key;
+    bmdotcom.model.meta.shop.displayOrder.sort();
+    _.each(bmdotcom.model.edition, function(value, key) {
+      bmdotcom.model.settings.currentEdition = key;
       value.collaborators.sort();
       value.items.sort();
       return value.collaborators = _.uniq(value.collaborators, true);
     });
-    return _.each(aWindow.model.collaborator, function(value, key) {
+    return _.each(bmdotcom.model.collaborator, function(value, key) {
       return value.items.sort();
     });
   };

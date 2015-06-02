@@ -3,10 +3,27 @@ header {
 	margin-bottom: em(40);
 }
 
-.main-nav {}
+.main-nav,
+.name-tag-wrapper,
+.name-tag-wrapper:after,
+.name-tag,
+.name-tag-header {
+	backface-visibility: hidden;
+}
+
+.main-nav {
+	transition: transform 400ms ease;
+
+	.root & {
+		transform: translateY(420px);
+	}
+}
 
 .main-nav-list {
 	@extend .clearfix;
+
+	background-image: url(data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAMAAAAocOYLAAAANlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC3dmhyAAAAEnRSTlMYFxkWGhUbExQcHRIeER8PIA73vaSEAAAB3ElEQVQoFQXBh4HkOBAEsHJtSEmz9/kn+wAauv2O+gq9Hz4OB1tEAAnncPWe9g1P4WFs1BRhi8Lv8AqWSddDcecTz3NHryy0oijmf2CtjjwFl9QRJKSu74Fgl/0ExpjYbp+8wCtCjvtzk64+roqUH8oDfAgbYBlboqb+ctNJIx0Cmj8sgRhTBXwEGej2uXxw6Keqy3KVxmwfxgJCV8CHSD46NNbaSscJzVQTsKEqrtlSd0pvn7e7vCAB6LAi5jKv7gkVFjMrP0ZRlg+6VYcvQjeePxcAZ1DU9MEVcCDxhI2akZGawkfIbrwBncABsb1VU7BBvH1eFtL66eEGi60hVM98ODr5OVe3y3A1xqky58uMYEo83EtCKdqAA3sJyAj6x3suNSbpsrDd0ZAlI67GLftT1VL9QDWW1LoJeNr8yAuqVBcAJhH7WincMrw9T2Ecl9Th/ZdOp7NAIo+xPnA9S7N4Ql0wNyiK0mwKy4g5GKeBHPUIBBvbRNWWpHvUuiCaQz2o0RIbbBdPGq1F3sYcpQZZ1tTag9t9CrjZF4yrHga1XZ/Ke/7dVz1unm16WQEIuBKyeU13OR2sJzOIm/h4haPJi1Bx6QN2fauKFcQ3Hb+I5Y96ahWh9YcnnP8BI+wQR1WzuvYAAAAASUVORK5CYII=);
+	background-repeat: repeat;
 }
 
 .main-nav-list-item {
@@ -34,29 +51,52 @@ header {
 	height: 3em;
 	line-height: 3em;
 	text-align: center;
-	font-size: 1.2em;
+	font-size: 1.5em;
 	font-family: $font-header;
 	text-transform: uppercase;
-	background-color: rgba($color-grey-background, 0.6);
-	transition: background-color 0.2s ease-in;
+	background-color: rgba($color-grey-background, 0.2);
+	transition: background-color 175ms ease-in;
+
+	// &.resume-link {
+	// 	background-color: rgba($emerald, 1);
+	// }
+
+	// &.projects-link {
+	// 	background-color: rgba($peter-river, 1);
+	// }
+
+	// &.contact-link {
+	// 	background-color: rgba($amethyst, 1);
+	// }
 
 	&:hover {
 		text-decoration: none;
-		background-color: rgba($color-grey-background, 1.0);
+		background-color: rgba($color-black, 0.1);
+
+		// &.resume-link {
+		// 	background-color: rgba($nephritis, 1);
+		// }
+
+		// &.projects-link {
+		// 	background-color: rgba($belize-hole, 1);
+		// }
+
+		// &.contact-link {
+		// 	background-color: rgba($wisteria, 1);
+		// }
 	}
 }
 
 // name tag
-.name-tag-wrapper,
-.name-tag-wrapper:after,
-.name-tag,
-.name-tag-header {
-	backface-visibility: hidden;
-}
-
 .name-tag-wrapper {
 	position: absolute;
-	top: 80px;
+	transition: transform 500ms ease;
+	transform-origin: top left;
+	transform: scale(0.35) translateX(-144px) translateY(-266px) rotate(-24deg);
+
+	.root & {
+		transform: translateX(20px) translateY(30px) rotate(-2deg);
+	}
 
 	&:after {
 		content: '';
@@ -68,11 +108,12 @@ header {
 	  z-index: -1;
 	  border-radius: 30px;
 	  transition-property: transform, box-shadow;
-		transition-duration: 190ms;
+		transition-duration: 175ms;
 		transition-timing-function: ease;
 	}
 
-	&:hover:after {
+	// only animate hover on homepage
+	.root &:hover:after {
 		box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
 	  transform: rotate(2deg);
 	}
@@ -88,6 +129,10 @@ header {
 	transition-property: transform;
 	transition-duration: 175ms;
 	transition-timing-function: ease;
+
+	&:hover {
+		text-decoration: none;
+	}
 
 	&:hover {
 		text-decoration: none;

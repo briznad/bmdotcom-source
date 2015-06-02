@@ -1,6 +1,6 @@
-aWindow = aWindow or {}
+bmdotcom = bmdotcom or {}
 
-aWindow.template = do ->
+bmdotcom.template = do ->
   'use strict'
 
   init = (callback) ->
@@ -13,13 +13,13 @@ aWindow.template = do ->
 
     # uh-oh, something went wrong
     request.fail (data) ->
-      _processTemplates do aWindow.dummyData().template, callback
+      do callback
 
   _processTemplates = (response, callback) ->
     $templates = $(response).filter 'script[type="text/html"]'
 
     $templates.each ->
-      aWindow.template[$(this).attr 'id'] = _.template $(this).html()
+      bmdotcom.template[$(this).attr 'id'] = _.template $(this).html()
 
     do callback
 
