@@ -4,10 +4,14 @@ bmdotcom = bmdotcom || {};
 
 bmdotcom.init = (function() {
   'use strict';
-  bmdotcom.template.init(function() {
-    return bmdotcom.modelBuildr.init(function() {
-      return bmdotcom.router.init();
+  return _.defer(function() {
+    bmdotcom.template.init(function() {
+      return bmdotcom.modelBuildr.init(function() {
+        return bmdotcom.router.init(function() {
+          return bmdotcom.updateView.removeLoading();
+        });
+      });
     });
+    return bmdotcom.tracking.init();
   });
-  return bmdotcom.tracking.init();
 })();

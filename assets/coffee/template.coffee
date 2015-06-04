@@ -4,20 +4,9 @@ bmdotcom.template = do ->
   'use strict'
 
   init = (callback) ->
-    request = $.ajax
-      url: '/assets/templates/templates.html',
-      dataType: 'html',
+    _processTemplates $('script[type="text/html"]'), callback
 
-    request.done (data) ->
-      _processTemplates data, callback
-
-    # uh-oh, something went wrong
-    request.fail (data) ->
-      do callback
-
-  _processTemplates = (response, callback) ->
-    $templates = $(response).filter 'script[type="text/html"]'
-
+  _processTemplates = ($templates, callback) ->
     $templates.each ->
       bmdotcom.template[$(this).attr 'id'] = _.template $(this).html()
 

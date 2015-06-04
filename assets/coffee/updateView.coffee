@@ -6,7 +6,20 @@ bmdotcom.updateView = do ->
   beforeUpdate = (request) ->
     # false if /jpg$|jpeg$|png$|gif$|bmp$/.test request.path
 
+  removeLoading = ->
+    desiredDelay = 1500
+    elapsedTime = Math.floor(new Date()) - bmdotcom.loadTime
+    remainingDelay = if elapsedTime < desiredDelay then desiredDelay - elapsedTime else 0
+
+    # remove loading class from html element
+    t = setTimeout ->
+      bmdotcom.cache.$html.removeClass('loading')
+    , remainingDelay
+
   update = (pageTitle) ->
+    # cancel update if new page is the same as the old page
+    return false if pageTitle is bmdotcom.model.settings.currentPage.title
+
     # determine the current page object
     currentPage = bmdotcom.model.pages[pageTitle]
 
@@ -32,7 +45,7 @@ bmdotcom.updateView = do ->
     # add current body classes
     bmdotcom.cache.$body
       .addClass(pageTitle)
-      .removeClass(if bmdotcom.model.settings.currentPage then bmdotcom.model.settings.currentPage.title else '')
+      .removeClass(bmdotcom.model.settings.currentPage.title)
 
   _updateCurrentPage = (pageTitle) ->
     bmdotcom.model.settings.currentPage = _.extend bmdotcom.model.settings.currentPage or {},
@@ -55,3 +68,4 @@ bmdotcom.updateView = do ->
 
   beforeUpdate  : beforeUpdate
   update        : update
+  removeLoading : removeLoading
