@@ -10,7 +10,8 @@ bmdotcom.modal = (function() {
     showCloseBtn: true,
     redirectHome: false,
     reloadPage: false,
-    additionalClasses: []
+    additionalClasses: [],
+    postDestroy: function() {}
   };
   init = function(content, opts) {
     if (content == null) {
@@ -19,7 +20,7 @@ bmdotcom.modal = (function() {
     options = _.extend(options, opts || {}, {
       modalID: _.uniqueId('modal-')
     });
-    bmdotcom.cache.$body.append(bmdotcom.template.modalModule({
+    bmdotcom.cache.$body.append(bmdotcom.template.modalView({
       modalID: options.modalID,
       modalContent: content,
       additionalClasses: _.isArray(options.additionalClasses) ? options.additionalClasses.join(' ') : options.additionalClasses,
@@ -41,6 +42,7 @@ bmdotcom.modal = (function() {
     } else if (e == null) {
       $('#' + options.modalID).remove();
     }
+    options.postDestroy();
     return _redirect();
   };
   _redirect = function() {

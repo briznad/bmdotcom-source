@@ -11,13 +11,16 @@ bmdotcom.updateView = (function() {
     desiredDelay = 1500;
     elapsedTime = Math.floor(new Date()) - bmdotcom.loadTime;
     remainingDelay = elapsedTime < desiredDelay ? desiredDelay - elapsedTime : 0;
+    $('#timingInfo').text((elapsedTime / 1000).toFixed(2));
     return t = setTimeout(function() {
       return bmdotcom.cache.$html.removeClass('loading');
     }, remainingDelay);
   };
   update = function(pageTitle) {
-    var currentPage;
-    if (pageTitle === bmdotcom.model.settings.currentPage.title) {
+    var currentPage, previousPage;
+    previousPage = bmdotcom.model.settings.currentPage.title;
+    if (pageTitle === previousPage) {
+      console.debug('Requested page is the same as the current page. Request denied.');
       return false;
     }
     currentPage = bmdotcom.model.pages[pageTitle];
@@ -46,13 +49,14 @@ bmdotcom.updateView = (function() {
       return 'Brad Mallow | ' + pageTitle;
     }
   };
-  _initEvents = function(pageTitle) {
+  _initEvents = function(pageTitle, previousPage) {
     var x;
+    bmdotcom.cache.$body.off('.' + previousPage);
     switch (pageTitle) {
       case 'root':
         return x = 1;
       case 'contact':
-        return x = 2;
+        return bmdotcom.contact.registerEvents();
       default:
         return x = 3;
     }

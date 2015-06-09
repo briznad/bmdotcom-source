@@ -1,0 +1,24 @@
+footer {
+  margin-top: em(40);
+  text-align: center;
+
+  .root & {
+    display: none;
+  }
+
+  section {
+    display: inline-block;
+    padding: 0 1em;
+    border-left: 1px solid $color-border-light;
+
+    &:first-child {
+      border-left: none;
+    }
+  }
+
+  .timing-info {
+    .loading & {
+      display: none;
+    }
+  }
+}

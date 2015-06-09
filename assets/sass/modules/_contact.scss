@@ -1,0 +1,155 @@
+// meta info
+.social-media-container {
+	float: left;
+	width: 100% - $golden-ratio;
+
+	.section-header {
+		margin-bottom: em(8);
+	}
+}
+
+// contact form
+.form-container {
+	float: right;
+	width: $golden-ratio;
+
+	label {
+		display: block;
+		margin-top: em(15);
+		position: relative;
+
+		&:first-child,
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+
+	.label-text {
+		width: 100%;
+		position: absolute;
+		top: 0.75em;
+	  left: 0.75em;
+	  font-size: 1.5em;
+	  color: $color-border-light;
+	  pointer-events: none;
+	  transition-property: font-size, top, left;
+	  transition-duration: 175ms;
+	  transition-timing-function: ease;
+
+	  &:after {
+			width: 45px;
+		  height: 45px;
+		  line-height: 45px;
+			position: absolute;
+			top: 1px;
+		  right: -4px;
+		  text-align: center;
+			font-size: 38px;
+			border-radius: 50%;
+		  color: $color-white;
+		  opacity: 0;
+		  transition: opacity 250ms ease;
+		}
+	}
+
+	[type="text"],
+	[type="email"],
+	textarea,
+	[type="submit"] {
+		&:focus {
+			border-color: rgba($peter-river, 0.75);
+			outline-color: rgba($peter-river, 0.75);
+			outline-style: solid;
+			outline-offset: 0px;
+		  outline-width: 2px;
+		}
+	}
+
+	[type="text"],
+	[type="email"],
+	textarea {
+		display: block;
+		width: 100%;
+		padding: 1em 0.75em 0.5em;
+		border: 1px solid rgba($color-border-light, 0.5);
+		font-size: 1.5em;
+
+		&:focus,
+		&.changed {
+			+ .label-text {
+				font-size: 0.9em;
+			  top: 0.5em;
+			  left: 1.4em;
+			}
+		}
+
+		&.changed,
+		&.deleted {
+			+ .label-text {
+				&:after {
+					opacity: 1;
+			  }
+			}
+		}
+
+		&.deleted {
+			+ .label-text {
+				&:after {
+					top: -9px;
+			  }
+			}
+
+			&:focus {
+				+ .label-text {
+					&:after {
+						top: 1px;
+				  }
+				}
+			}
+		}
+
+		&:valid {
+			+ .label-text {
+				&:after {
+					content: '\2713';
+					background-color: rgba($emerald, 0.9);
+				}
+			}
+		}
+
+		&:invalid {
+			+ .label-text {
+				&:after {
+					content: '!';
+					background-color: rgba($pomegranate, 0.9);
+					font-weight: bold;
+				}
+			}
+		}
+	}
+
+	[type="submit"] {
+		display: block;
+	  width: 100%;
+	  margin-top: em(15);
+		padding: 0.75em;
+		border-radius: 0;
+	  border: 1px solid rgba($peter-river, 0.75);
+	  background-color: rgba($peter-river, 0.9);
+	  font-size: 1.5em;
+	  text-transform: uppercase;
+	  font-weight: bold;
+	  color: $color-white;
+
+	  &:focus,
+	  &:hover {
+	  	background-color: $peter-river;
+	  }
+
+	  &:active {
+	  	background-color: $midnight-blue;
+	  	border-color: $midnight-blue;
+	  	outline-color: $midnight-blue;
+	  }
+	}
+}

@@ -17,7 +17,7 @@ bmdotcom.router = (function() {
     var routes;
     return routes = new Davis(function() {
       this.configure(function(config) {
-        return config.generateRequestOnPageLoad = false;
+        return config.generateRequestOnPageLoad = true;
       });
       this.before(bmdotcom.updateView.beforeUpdate);
       this.after(function(req) {

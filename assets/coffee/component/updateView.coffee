@@ -11,14 +11,22 @@ bmdotcom.updateView = do ->
     elapsedTime = Math.floor(new Date()) - bmdotcom.loadTime
     remainingDelay = if elapsedTime < desiredDelay then desiredDelay - elapsedTime else 0
 
+    # print render time in the footer
+    $('#timingInfo').text((elapsedTime / 1000).toFixed(2))
+
     # remove loading class from html element
     t = setTimeout ->
       bmdotcom.cache.$html.removeClass('loading')
     , remainingDelay
 
   update = (pageTitle) ->
+    # save the previous page for comparison
+    previousPage = bmdotcom.model.settings.currentPage.title
+
     # cancel update if new page is the same as the old page
-    return false if pageTitle is bmdotcom.model.settings.currentPage.title
+    if pageTitle is previousPage
+      console.debug 'Requested page is the same as the current page. Request denied.'
+      return false
 
     # determine the current page object
     currentPage = bmdotcom.model.pages[pageTitle]
@@ -55,12 +63,17 @@ bmdotcom.updateView = do ->
     if pageTitle is 'root' then 'Brad Mallow' else 'Brad Mallow | ' + pageTitle
 
   # basic router to load event registration for each page
-  _initEvents = (pageTitle) ->
+  _initEvents = (pageTitle, previousPage) ->
+    # deregister previous page events
+    bmdotcom.cache.$body.off '.' + previousPage
+
     switch pageTitle
       when 'root'
         x = 1
+
       when 'contact'
-        x = 2
+        do bmdotcom.contact.registerEvents
+
       else
         x = 3
 

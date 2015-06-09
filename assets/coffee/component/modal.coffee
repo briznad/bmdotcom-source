@@ -9,6 +9,7 @@ bmdotcom.modal = do ->
     redirectHome      : false
     reloadPage        : false
     additionalClasses : []
+    postDestroy       : ->
 
   init = (content, opts) ->
     return false unless content?
@@ -16,7 +17,7 @@ bmdotcom.modal = do ->
     options = _.extend options, opts or {},
       modalID: _.uniqueId 'modal-'
 
-    bmdotcom.cache.$body.append bmdotcom.template.modalModule
+    bmdotcom.cache.$body.append bmdotcom.template.modalView
       modalID           : options.modalID
       modalContent      : content
       additionalClasses : if _.isArray(options.additionalClasses) then options.additionalClasses.join(' ') else options.additionalClasses
@@ -39,6 +40,7 @@ bmdotcom.modal = do ->
     else unless e?
       do $('#' + options.modalID).remove
 
+    do options.postDestroy
     do _redirect
 
   _redirect = ->

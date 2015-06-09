@@ -10,7 +10,10 @@ bmdotcom.template = (function() {
   };
   _processTemplates = function($templates, callback) {
     $templates.each(function() {
-      return bmdotcom.template[$(this).attr('id')] = _.template($(this).html());
+      var $template;
+      $template = $(this);
+      bmdotcom.template[$template.attr('id')] = _.template($template.html());
+      return $template.remove();
     });
     return callback();
   };

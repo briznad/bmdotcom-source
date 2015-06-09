@@ -1,0 +1,9 @@
+<div class="modal-overlay <%= additionalClasses %>" id="<%= modalID %>">
+  <section class="modal-container">
+    <div class="modal-content"><%= modalContent %></div>
+
+    <% if (showCloseBtn) { %>
+      <a class="modal-close" href="javascript:void(0)"><span class="visually-hidden">close modal</span></a>
+    <% } %>
+  </section>
+</div>

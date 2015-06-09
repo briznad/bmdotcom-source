@@ -1,0 +1,1 @@
+document.documentElement.classList?document.documentElement.classList.add("loading"):document.documentElement.className+=" loading";

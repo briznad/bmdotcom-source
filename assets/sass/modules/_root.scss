@@ -1,8 +1,7 @@
-// main / dynamic container
 .main-container {
-	@extend .clearfix;
-
-	min-height: em(400);
+	.root & {
+		padding: 0;
+	}
 }
 
 // root page welcome text

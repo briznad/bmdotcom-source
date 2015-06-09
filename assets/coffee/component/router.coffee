@@ -11,7 +11,7 @@ bmdotcom.router = do ->
   _initRoutes = ->
     routes = new Davis ->
       @configure (config) ->
-        config.generateRequestOnPageLoad = false
+        config.generateRequestOnPageLoad = true
 
       @before bmdotcom.updateView.beforeUpdate
 

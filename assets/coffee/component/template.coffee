@@ -8,7 +8,9 @@ bmdotcom.template = do ->
 
   _processTemplates = ($templates, callback) ->
     $templates.each ->
-      bmdotcom.template[$(this).attr 'id'] = _.template $(this).html()
+      $template = $(this)
+      bmdotcom.template[$template.attr 'id'] = _.template $template.html()
+      do $template.remove
 
     do callback
 

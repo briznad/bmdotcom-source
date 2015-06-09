@@ -12,5 +12,5 @@ bmdotcom.tracking = do ->
       req
     ]
 
-  init              : init
-  trackPage         : trackPage
+  init      : init
+  trackPage : trackPage

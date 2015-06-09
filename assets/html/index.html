@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- include:section partials.meta --><!-- /include -->
+
+        <!-- include:script inline noprocess logTime --><!-- /include -->
+        <!-- include:script inline noprocess viewport --><!-- /include -->
+        <!-- include:script inline noprocess loadingClass --><!-- /include -->
+
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" media="screen, projection" href="assets/css/style.min.css" />
+    </head>
+
+    <body class="root">
+        <!-- include:section partials.header --><!-- /include -->
+
+        <main id="dynamicContainer" class="main-container">
+            <!-- include:section modules.root --><!-- /include -->
+        </main>
+
+        <!-- include:section partials.footer --><!-- /include -->
+
+        <!--[if lt IE 9]>
+            <p class="chromeframe" style="position: fixed; z-index: 1; width: 100%; top: 0; margin: 0; padding: 15px; text-align: center; background-color: #555;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <script type="text/html" id="rootView">
+            <!-- include:section modules.root --><!-- /include -->
+        </script>
+
+        <script type="text/html" id="resumeView">
+            <!-- include:section modules.resume --><!-- /include -->
+        </script>
+
+        <script type="text/html" id="projectsView">
+            <!-- include:section modules.projects --><!-- /include -->
+        </script>
+
+        <script type="text/html" id="contactView">
+            <!-- include:section modules.contact --><!-- /include -->
+        </script>
+
+        <script type="text/html" id='modalView'>
+            <!-- include:section modules.modal --><!-- /include -->
+        </script>
+
+        <script type="text/javascript" async="async" src="assets/js/do.js"></script>
+        <!-- <script src="assets/js/do.min.js"></script> -->
+
+        <!-- include:script inline noprocess ga --><!-- /include -->
+    </body>
+</html>

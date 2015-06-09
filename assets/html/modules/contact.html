@@ -1,0 +1,36 @@
+<section class="social-media-container">
+  <h2 class="section-header">Also find me on…</h2>
+  <ul class="social-media-list">
+    <li class="social-media-list-item">GitHub</li>
+    <li class="social-media-list-item">Stack Overflow</li>
+    <li class="social-media-list-item">Twitter</li>
+  </ul>
+</section>
+
+<section class="form-container">
+  <form action="/contact" method="post">
+    <input name="typeOfContact" type="hidden" value="Contact Form Message" />
+
+    <label for="contactName">
+      <input id="contactName" name="name" type="text" required autofocus />
+      <span class="label-text">Name*</span>
+    </label>
+
+    <label for="contactEmail">
+      <input id="contactEmail" name="_replyto" type="email" required />
+      <span class="label-text">Email*</span>
+    </label>
+
+    <label for="contactSubject">
+      <input id="contactSubject" name="subject" type="text" required />
+      <span class="label-text">Subject*</span>
+    </label>
+
+    <label for="contactMessage">
+      <textarea id="contactMessage" name="message" rows="5" required></textarea>
+      <span class="label-text">Message*</span>
+    </label>
+
+    <input type="submit" value="Send" />
+  </form>
+</section>
