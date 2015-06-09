@@ -4,7 +4,52 @@
 	width: 100% - $golden-ratio;
 
 	.section-header {
-		margin-bottom: em(8);
+		margin-bottom: 0.5em;
+	}
+}
+
+.social-media-list-item {
+	display: block;
+	margin-top: 0.75em;
+	font-size: 1.4em;
+
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+.social-media-link {
+	display: inline-block;
+	position: relative;
+	padding-left: 1.9em;
+
+	&,
+	&:before {
+		height: 28px;
+		line-height: 28px;
+	}
+
+	&:before {
+		position: absolute;
+		width: 30px;
+	  left: 0;
+	  top: 0;
+	  text-align: center;
+		font-family: $font-icon;
+		font-size: 1.3em;
+	}
+
+	&[href*="github"]:before {
+		content: '\e803';
+	}
+
+	&[href*="stack"]:before {
+		content: '\e800';
+	}
+
+	&[href*="twitter"]:before {
+		content: '\e804';
+		font-size: 1em;
 	}
 }
 
@@ -36,7 +81,7 @@
 	  transition-duration: 175ms;
 	  transition-timing-function: ease;
 
-	  &:after {
+	  &:before {
 			width: 45px;
 		  height: 45px;
 		  line-height: 45px;
@@ -74,6 +119,18 @@
 		border: 1px solid rgba($color-border-light, 0.5);
 		font-size: 1.5em;
 
+		// automatically put a red asterisk next to any reqired field label
+		&[required] {
+			+ .label-text {
+				&:after {
+					content: '*';
+					position: absolute;
+					color: $pomegranate;
+				  font-size: 1.3em;
+			  }
+			}
+		}
+
 		&:focus,
 		&.changed {
 			+ .label-text {
@@ -86,7 +143,7 @@
 		&.changed,
 		&.deleted {
 			+ .label-text {
-				&:after {
+				&:before {
 					opacity: 1;
 			  }
 			}
@@ -94,14 +151,14 @@
 
 		&.deleted {
 			+ .label-text {
-				&:after {
+				&:before {
 					top: -9px;
 			  }
 			}
 
 			&:focus {
 				+ .label-text {
-					&:after {
+					&:before {
 						top: 1px;
 				  }
 				}
@@ -110,7 +167,7 @@
 
 		&:valid {
 			+ .label-text {
-				&:after {
+				&:before {
 					content: '\2713';
 					background-color: rgba($emerald, 0.9);
 				}
@@ -119,7 +176,7 @@
 
 		&:invalid {
 			+ .label-text {
-				&:after {
+				&:before {
 					content: '!';
 					background-color: rgba($pomegranate, 0.9);
 					font-weight: bold;
