@@ -31,6 +31,7 @@
 .project-media {
 	img {
 		max-width: 100%;
+    min-width: 100%;
 	}
 }
 
@@ -56,4 +57,10 @@
 	.projects-list {
 		column-count: 2;
 	}
+}
+
+@media only screen and (max-width: $breakpoint-small) {
+  .projects-list {
+    column-count: 1;
+  }
 }

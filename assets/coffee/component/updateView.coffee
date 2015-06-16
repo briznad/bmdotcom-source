@@ -19,35 +19,6 @@ bmdotcom.updateView = do ->
       bmdotcom.cache.$html.removeClass('loading')
     , remainingDelay
 
-  preloadImages = ->
-    _.defer ->
-      _doPreloadImg [
-        '8ball_sample.png'
-        'BdayMindr_sample.png'
-        'Carolines_Comedy_sample.png'
-        'Fraiche_sample.png'
-        'Intuit_Perf_sample.png'
-        'Intuit_QuickNav_sample.png'
-        'Love_and_Theft_sample.png'
-        'Noike_sample.png'
-        'Pyxera_sample.png'
-        'SLT_Remix_sample.png'
-        'bouncingBubbles_sample.png'
-        'bradmallow_com_sample.png'
-        'shapeDance_sample.png'
-      ]
-
-  _doPreloadImg = (preloadList) ->
-    _.defer ->
-      dummyImg = new Image()
-      dummyImg.src = 'assets/images/projects/' + do preloadList.pop
-      # dummyImg.src = 'assets/images/projects/' + do preloadList.pop
-      dummyImg.onload = ->
-        if preloadList.length
-          _doPreloadImg preloadList
-        else
-          console.debug 'All images successfully preloaded.'
-
   update = (pageTitle) ->
     # save the previous page for comparison
     previousPage = bmdotcom.model.settings.currentPage.title
@@ -110,4 +81,3 @@ bmdotcom.updateView = do ->
   beforeUpdate  : beforeUpdate
   update        : update
   removeLoading : removeLoading
-  preloadImages : preloadImages

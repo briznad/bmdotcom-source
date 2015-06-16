@@ -13,7 +13,7 @@ bmdotcom.init = do ->
         do bmdotcom.updateView.removeLoading
 
         # warm up the cache / preload project page images
-        do bmdotcom.updateView.preloadImages
+        do bmdotcom.preload.init
 
     # init GA tracking
     do bmdotcom.tracking.init

@@ -4,7 +4,7 @@ bmdotcom = bmdotcom || {};
 
 bmdotcom.updateView = (function() {
   'use strict';
-  var beforeUpdate, preloadImages, removeLoading, update, _computePageTitle, _doPreloadImg, _initEvents, _initThumbnails, _updateBodyClasses, _updateCurrentPage;
+  var beforeUpdate, removeLoading, update, _computePageTitle, _initEvents, _initThumbnails, _updateBodyClasses, _updateCurrentPage;
   beforeUpdate = function(request) {};
   removeLoading = function() {
     var desiredDelay, elapsedTime, remainingDelay, t;
@@ -15,25 +15,6 @@ bmdotcom.updateView = (function() {
     return t = setTimeout(function() {
       return bmdotcom.cache.$html.removeClass('loading');
     }, remainingDelay);
-  };
-  preloadImages = function() {
-    return _.defer(function() {
-      return _doPreloadImg(['8ball_sample.png', 'BdayMindr_sample.png', 'Carolines_Comedy_sample.png', 'Fraiche_sample.png', 'Intuit_Perf_sample.png', 'Intuit_QuickNav_sample.png', 'Love_and_Theft_sample.png', 'Noike_sample.png', 'Pyxera_sample.png', 'SLT_Remix_sample.png', 'bouncingBubbles_sample.png', 'bradmallow_com_sample.png', 'shapeDance_sample.png']);
-    });
-  };
-  _doPreloadImg = function(preloadList) {
-    return _.defer(function() {
-      var dummyImg;
-      dummyImg = new Image();
-      dummyImg.src = 'assets/images/projects/' + preloadList.pop();
-      return dummyImg.onload = function() {
-        if (preloadList.length) {
-          return _doPreloadImg(preloadList);
-        } else {
-          return console.debug('All images successfully preloaded.');
-        }
-      };
-    });
   };
   update = function(pageTitle) {
     var currentPage, previousPage;
@@ -83,7 +64,6 @@ bmdotcom.updateView = (function() {
   return {
     beforeUpdate: beforeUpdate,
     update: update,
-    removeLoading: removeLoading,
-    preloadImages: preloadImages
+    removeLoading: removeLoading
   };
 })();

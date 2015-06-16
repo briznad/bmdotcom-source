@@ -8,7 +8,7 @@ bmdotcom.init = (function() {
     bmdotcom.modelBuildr.init(function() {
       return bmdotcom.router.init(function() {
         bmdotcom.updateView.removeLoading();
-        return bmdotcom.updateView.preloadImages();
+        return bmdotcom.preload.init();
       });
     });
     return bmdotcom.tracking.init();
