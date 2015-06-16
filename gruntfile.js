@@ -60,11 +60,7 @@ module.exports = function(grunt) {
                             footer: '<%= config.htmlInput %>/partials/footer.html'
                         },
                         modules: {
-                            root: '<%= config.htmlInput %>/modules/root.html',
-                            resume: '<%= config.htmlInput %>/modules/resume.html',
-                            projects: '<%= config.htmlInput %>/modules/projects.html',
-                            contact: '<%= config.htmlInput %>/modules/contact.html',
-                            modal: '<%= config.htmlInput %>/modules/modal.html'
+                            root: '<%= config.htmlInput %>/modules/root.html'
                         }
                     },
                     scripts: {
@@ -125,6 +121,31 @@ module.exports = function(grunt) {
         },
 
         // coffee/js tasks
+        'template-module': {
+            prod: {
+                options: {
+                    module: false,
+                    provider: 'underscore',
+                    prettify: true,
+                    prettifyOptions: {
+                        indentSize: 4,
+                        indentChar: '\t',
+                        maxPreserveNewlines: 1
+                    },
+                    namespace: 'bmdotcom.templates',
+                    processName: function(filename) {
+                        // remove ".html" from filename
+                        // then remove path from filename by splitting on forward slash and returning the last item in the created array
+                        // then afix "View" to end of filename
+                        return filename.replace(/\.html$/, '').split(/\//).slice(-1)[0] + 'View';
+                    }
+                },
+                files: {
+                    '<%= config.jsRawIO %>component/templates.js': ['<%= config.htmlInput %>/modules/*.html']
+                }
+            }
+        },
+
         coffeelint: {
             dist: {
                 files: {
@@ -255,17 +276,17 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            // whenever html is changed, minify it
+            // whenever html is changed…
             html: {
                 files: '<%= config.htmlInput %>**/*.html',
                 tasks: ['html']
             },
-            // whenever a scss file is changed, compile it
+            // whenever a scss file is changed…
             sass: {
                 files: '<%= config.sassInput %>**/*.scss',
                 tasks: ['css']
             },
-            // whenever a coffee file is changed, compile it
+            // whenever a coffee file is changed…
             coffee: {
                 files: '<%= config.coffeeInput %>**/*.coffee',
                 tasks: ['js', 'html']
@@ -292,10 +313,10 @@ module.exports = function(grunt) {
     });
 
     // default task
-    grunt.registerTask('default', ['clean', 'coffeelint', 'coffee', 'jshint', 'concat', 'uglify', 'sass', 'autoprefixer', 'cssmin', 'htmlbuild', 'htmlmin', 'notify']);
+    grunt.registerTask('default', ['clean', 'coffeelint', 'coffee', 'jshint', 'template-module', 'concat', 'uglify', 'sass', 'autoprefixer', 'cssmin', 'htmlbuild', 'htmlmin', 'notify']);
 
     // component tasks
-    grunt.registerTask('html', ['clean:html', 'htmlbuild', 'htmlmin', 'notify']);
+    grunt.registerTask('html', ['template-module', 'concat', 'uglify:component', 'clean:html', 'htmlbuild', 'htmlmin', 'notify']);
     grunt.registerTask('css', ['clean:css', 'sass', 'autoprefixer', 'cssmin', 'notify']);
-    grunt.registerTask('js', ['clean:js', 'coffeelint', 'coffee', 'jshint', 'concat', 'uglify', 'notify']);
+    grunt.registerTask('js', ['clean:js', 'coffeelint', 'coffee', 'jshint', 'template-module', 'concat', 'uglify', 'notify']);
 };

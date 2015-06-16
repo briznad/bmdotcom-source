@@ -113,10 +113,10 @@
 	[type="text"],
 	[type="email"],
 	textarea {
+		@extend %content-box;
 		display: block;
 		width: 100%;
 		padding: 1em 0.75em 0.5em;
-		border: 1px solid rgba($color-border-light, 0.5);
 		font-size: 1.5em;
 
 		// automatically put a red asterisk next to any reqired field label

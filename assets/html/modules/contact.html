@@ -1,9 +1,11 @@
 <section class="social-media-container">
   <h2 class="section-header">Also find me on…</h2>
   <ul class="social-media-list">
-    <li class="social-media-list-item"><a href="https://github.com/briznad" class="social-media-link" target="_blank">GitHub</a></li>
-    <li class="social-media-list-item"><a href="http://stackoverflow.com/users/418954/briznad" class="social-media-link" target="_blank">Stack Overflow</a></li>
-    <li class="social-media-list-item"><a href="https://twitter.com/briznad" class="social-media-link" target="_blank">Twitter</a></li>
+    <% _.each(currentPage.socialMedia, function(value) { %>
+      <li class="social-media-list-item">
+        <a href="<%= value.link %>" class="social-media-link" target="_blank"><%= value.title %></a>
+      </li>
+    <% }); %>
   </ul>
 </section>
 

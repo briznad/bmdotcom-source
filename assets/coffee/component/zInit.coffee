@@ -5,13 +5,15 @@ bmdotcom.init = do ->
 
   # load templates
   _.defer ->
-    bmdotcom.template.init ->
-      # retrieve json and build document model
-      bmdotcom.modelBuildr.init ->
-        # load router controller
-        bmdotcom.router.init ->
-          # after everything has been inited, remove loading class
-          do bmdotcom.updateView.removeLoading
+    # build data model
+    bmdotcom.modelBuildr.init ->
+      # load router controller
+      bmdotcom.router.init ->
+        # after everything has been inited, remove loading class
+        do bmdotcom.updateView.removeLoading
+
+        # warm up the cache / preload project page images
+        do bmdotcom.updateView.preloadImages
 
     # init GA tracking
     do bmdotcom.tracking.init

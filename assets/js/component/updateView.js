@@ -4,17 +4,36 @@ bmdotcom = bmdotcom || {};
 
 bmdotcom.updateView = (function() {
   'use strict';
-  var beforeUpdate, removeLoading, update, _computePageTitle, _initEvents, _initThumbnails, _updateBodyClasses, _updateCurrentPage;
+  var beforeUpdate, preloadImages, removeLoading, update, _computePageTitle, _doPreloadImg, _initEvents, _initThumbnails, _updateBodyClasses, _updateCurrentPage;
   beforeUpdate = function(request) {};
   removeLoading = function() {
     var desiredDelay, elapsedTime, remainingDelay, t;
-    desiredDelay = 1500;
+    desiredDelay = 1250;
     elapsedTime = Math.floor(new Date()) - bmdotcom.loadTime;
     remainingDelay = elapsedTime < desiredDelay ? desiredDelay - elapsedTime : 0;
     $('#timingInfo').text((elapsedTime / 1000).toFixed(2));
     return t = setTimeout(function() {
       return bmdotcom.cache.$html.removeClass('loading');
     }, remainingDelay);
+  };
+  preloadImages = function() {
+    return _.defer(function() {
+      return _doPreloadImg(['8ball_sample.png', 'BdayMindr_sample.png', 'Carolines_Comedy_sample.png', 'Fraiche_sample.png', 'Intuit_Perf_sample.png', 'Intuit_QuickNav_sample.png', 'Love_and_Theft_sample.png', 'Noike_sample.png', 'Pyxera_sample.png', 'SLT_Remix_sample.png', 'bouncingBubbles_sample.png', 'bradmallow_com_sample.png', 'shapeDance_sample.png']);
+    });
+  };
+  _doPreloadImg = function(preloadList) {
+    return _.defer(function() {
+      var dummyImg;
+      dummyImg = new Image();
+      dummyImg.src = 'assets/images/projects/' + preloadList.pop();
+      return dummyImg.onload = function() {
+        if (preloadList.length) {
+          return _doPreloadImg(preloadList);
+        } else {
+          return console.debug('All images successfully preloaded.');
+        }
+      };
+    });
   };
   update = function(pageTitle) {
     var currentPage, previousPage;
@@ -27,8 +46,7 @@ bmdotcom.updateView = (function() {
     _updateBodyClasses(pageTitle);
     _updateCurrentPage(pageTitle);
     bmdotcom.cache.$title.text(_computePageTitle(pageTitle));
-    bmdotcom.cache.$dynamicContainer.html(bmdotcom.template[pageTitle + 'View']({
-      data: bmdotcom.model,
+    bmdotcom.cache.$dynamicContainer.html(bmdotcom.templates[pageTitle + 'View']({
       pageTitle: pageTitle,
       currentPage: currentPage
     }));
@@ -65,6 +83,7 @@ bmdotcom.updateView = (function() {
   return {
     beforeUpdate: beforeUpdate,
     update: update,
-    removeLoading: removeLoading
+    removeLoading: removeLoading,
+    preloadImages: preloadImages
   };
 })();

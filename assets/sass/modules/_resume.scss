@@ -1,0 +1,73 @@
+.resume-column-left {
+	float: left;
+	width: 100% - $golden-ratio;
+	padding-right: 1em;
+}
+
+.resume-column-right {
+	float: right;
+	width: $golden-ratio;
+}
+
+.resume-section {
+	@extend %content-box;
+	margin-top: 1em;
+  padding: 1em;
+
+	&:first-child {
+    margin-top: 0;
+  }
+}
+
+.resume-section-header {
+  margin-bottom: 0.5em;
+}
+
+.resume-meta-list {
+  font-size: 1.2em;
+
+  dt {
+		@extend .visually-hidden;
+	}
+
+	dd {
+		margin-top: 0.5em;
+
+		&:first-of-type {
+			margin-top: 0;
+			font-size: 1.5em;
+			font-weight: bold;
+		}
+	}
+}
+
+.education-degree-year,
+.job-location-period {
+	font-weight: bold;
+  color: $concrete;
+}
+
+.skill-list-item,
+.job-achievements-list-item {
+	display: list-item;
+	margin-left: 1.5em;
+	list-style-type: square;
+  line-height: 1.5em;
+}
+
+.experience-list-item {
+	margin-top: 1em;
+
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+.job-location-period {
+	display: inline-block;
+  margin-bottom: 0.5em;
+}
+
+.job-achievements-title {
+	margin-bottom: 0.25em;
+}

@@ -1,3 +1,80 @@
-<article>
-  <p>resume</p>
+<article class="resume-container" itemscope itemtype="http://schema.org/Person">
+  <div class="resume-column-left">
+    <section class="resume-section meta">
+      <dl class="resume-meta-list">
+        <dt>name</dt>
+        <dd itemprop="name"><%= currentPage.meta.name %></dd>
+
+        <dt>phone number</dt>
+        <dd><a itemprop="telephone" href="tel://<%= currentPage.meta.phone.countryCode %>-<%= currentPage.meta.phone.areaCode %>-<%= currentPage.meta.phone.number %>">+<%= currentPage.meta.phone.countryCode %> (<%= currentPage.meta.phone.areaCode %>) <%= currentPage.meta.phone.number %></a></dd>
+
+        <dt>email address</dt>
+        <dd><a itemprop="email" href="mailto://<%= currentPage.meta.email %>"><%= currentPage.meta.email %></a></dd>
+
+        <dt>website</dt>
+        <dd><a itemprop="url" href="<%= currentPage.meta.website %>"><%= currentPage.meta.website %></a></dd>
+      </dl>
+    </section>
+
+    <section class="resume-section summary">
+      <h2 class="resume-section-header">Summary</h2>
+
+      <p><%= currentPage.summary %></p>
+    </section>
+
+    <section class="resume-section education">
+      <h2 class="resume-section-header">Education</h2>
+
+      <ul class="education-list">
+        <% _.each(currentPage.education, function(education) { %>
+          <li itemprop="alumniOf" itemscope itemtype="http://schema.org/CollegeOrUniversity" class="education-list-item">
+            <h3 itemprop="name"><%= education.school %></h3>
+            <span class="education-degree-year"><%= education.degree.type %>, <%= education.degree.subject %> &#8212; <%= education.graduationYear %></span>
+          </li>
+        <% }); %>
+      </ul>
+    </section>
+
+    <section class="resume-section skills">
+      <h2 class="resume-section-header">Skills</h2>
+
+      <ul class="skills-list">
+        <% _.each(currentPage.skills, function(skill) { %>
+          <li class="skill-list-item"><%= skill %></li>
+        <% }); %>
+      </ul>
+    </section>
+  </div>
+
+  <div class="resume-column-right">
+    <section class="resume-section experience">
+      <h2 class="resume-section-header">Professional Experience</h2>
+
+      <ul class="experience-list">
+        <% _.each(currentPage.experience, function(job) { %>
+          <li itemscope itemprop="worksFor" itemtype="http://schema.org/Organization" class="experience-list-item">
+            <h3><%= job.title %>, <span itemprop="name"><%= job.organization %></span></h3>
+
+            <span class="job-location-period">
+              <% print((job.location ? job.location + ' &#8212; ' : '') + job.period.start + ' to ' + (job.period.end ? job.period.end : 'present')); %>
+            </span>
+
+            <% if (job.description) { %>
+              <p class="job-description"><%= job.description %></p>
+            <% } %>
+
+            <% if (job.achievements && job.achievements.length) { %>
+              <h4 class="job-achievements-title">Achievements</h4>
+
+              <ul class="job-achievements-list">
+                <% _.each(job.achievements, function(achievement) { %>
+                  <li class="job-achievements-list-item"><%= achievement %></li>
+                <% }); %>
+              </ul>
+            <% } %>
+          </li>
+        <% }); %>
+      </ul>
+    </section>
+  </div>
 </article>

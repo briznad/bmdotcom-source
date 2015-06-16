@@ -1,3 +1,27 @@
-<article>
-  <p>projects</p>
-</article>
+<ul class="projects-list">
+  <% _.each(currentPage, function(project) { %>
+    <li class="projects-list-item">
+      <article class="project-wrapper">
+        <% if (project.link) { print('<a href="' + project.link + '" class="project-link" target="_blank">'); } %>
+
+        <h3 class="project-title"><%= project.title %></h3>
+
+        <figure class="project-media">
+          <img src="/assets/images/projects/<%= project.media %>" alt="<%= project.title %>" />
+        </figure>
+
+        <% if (project.link) { print('</a>'); } %>
+
+        <p class="project-description"><%= project.description %></p>
+
+        <dl class="project-keywords">
+          <dt>Keywords:</dt>
+
+          <% _.each(project.keywords, function(keyword) { %>
+            <dd><%= keyword %></dd>
+          <% }); %>
+        </dl>
+      </article>
+    </li>
+  <% }); %>
+</ul>

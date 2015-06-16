@@ -1,0 +1,59 @@
+.projects-list {
+	column-count: 3;
+  column-gap: 1em;
+}
+
+.projects-list-item {
+  @extend %content-box;
+	display: inline-block;
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.project-wrapper {
+	font-size: 1.1em;
+}
+
+.project-title,
+.project-media {
+  margin-bottom: 0.5em;
+}
+
+.project-title {
+	font-size: 1.3em;
+}
+
+.project-media {
+	img {
+		max-width: 100%;
+	}
+}
+
+.project-keywords {
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		display: inline;
+
+		&:after {
+			content: ',';
+		}
+
+		&:last-child:after {
+			content: none;
+		}
+	}
+}
+
+@media only screen and (max-width: $breakpoint-medium) {
+	.projects-list {
+		column-count: 2;
+	}
+}
