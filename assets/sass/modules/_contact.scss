@@ -99,15 +99,8 @@
 
 	[type="text"],
 	[type="email"],
-	textarea,
-	[type="submit"] {
-		&:focus {
-			border-color: rgba($peter-river, 0.75);
-			outline-color: rgba($peter-river, 0.75);
-			outline-style: solid;
-			outline-offset: 0px;
-		  outline-width: 2px;
-		}
+	textarea {
+		@extend %input-focus;
 	}
 
 	[type="text"],
@@ -186,27 +179,9 @@
 	}
 
 	[type="submit"] {
-		display: block;
-	  width: 100%;
+		@extend %cta;
+
+		width: 100%;
 	  margin-top: em(15);
-		padding: 0.75em;
-		border-radius: 0;
-	  border: 1px solid rgba($peter-river, 0.75);
-	  background-color: rgba($peter-river, 0.9);
-	  font-size: 1.5em;
-	  text-transform: uppercase;
-	  font-weight: bold;
-	  color: $color-white;
-
-	  &:focus,
-	  &:hover {
-	  	background-color: $peter-river;
-	  }
-
-	  &:active {
-	  	background-color: $midnight-blue;
-	  	border-color: $midnight-blue;
-	  	outline-color: $midnight-blue;
-	  }
 	}
 }

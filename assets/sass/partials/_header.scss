@@ -57,7 +57,8 @@ header {
 	background-color: rgba($color-grey-background, 0.1);
 	transition: background-color 175ms ease-in;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		text-decoration: none;
 		background-color: rgba($color-black, 0.1);
 	}
@@ -115,11 +116,9 @@ header {
 	transition-duration: 175ms;
 	transition-timing-function: ease;
 
-	&:hover {
-		text-decoration: none;
-	}
-
-	&:hover {
+	&:hover,
+	&:focus {
+		outline: none;
 		text-decoration: none;
 	  transform: scale(1.01) rotate(-0.6deg);
 	}
@@ -163,3 +162,13 @@ header {
   	transform: rotate(2deg);
   }
 }
+
+@media only screen and (max-width: $breakpoint-medium) {
+	.name-tag-wrapper {
+		transform: scale(0.25) translateX(-175px) translateY(-310px) rotate(-30deg);
+	}
+}
+
+// @media only screen and (max-width: $breakpoint-small) {
+
+// }

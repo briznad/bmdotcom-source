@@ -1,70 +1,88 @@
-/* partials */
-
 // visually hide elements for screen readers
 .visually-hidden {
-    position: absolute !important;
-    clip: rect(1px 1px 1px 1px);
-    clip: rect(1px,1px,1px,1px);
-    padding: 0 !important;
-    border: 0 !important;
-    height: 1px !important;
-    width: 1px !important;
-    overflow: hidden;
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px,1px,1px,1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
 }
 
 // visually hide text within elements for screen readers
 .visually-hidden-text {
-    text-indent: -10000px;
+  text-indent: -10000px;
 }
 
 .inactive {
-    display: none !important;
+  display: none !important;
 }
 
 .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 // clearfix
 .clearfix {
-    &:before,
-    &:after {
-        content: " ";
-        display: table;
-    }
-    &:after {
-        clear: both;
-    }
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 .relative-container {
-    position: relative;
+  position: relative;
 }
 
-// button styles
-%button {
-    padding: 0.75em 1em;
-    border: 1px solid $color-border-dark;
+// form input styles
+%input-focus {
+  &:focus {
+    border-color: rgba($peter-river, 0.75);
+    outline-color: rgba($peter-river, 0.75);
+    outline-style: solid;
+    outline-offset: 0px;
+    outline-width: 2px;
+  }
+}
+
+// CTA button styles
+%cta {
+  display: block;
+  padding: 0.75em;
+  border-radius: 0;
+  border: 1px solid rgba($peter-river, 0.75);
+  background-color: rgba($peter-river, 0.9);
+  font-size: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $color-white;
+
+  &:focus,
+  &:hover {
+    background-color: $peter-river;
+  }
+
+  &:hover {
     text-decoration: none;
-    color: $button-color;
-    background-color: $button-background;
+  }
 
-    &:hover {
-        text-decoration: none;
-        color: $button-color-hover;
-        background-color: $button-background-hover;
-    }
+  @extend %input-focus;
 
-    &:active {
-        color: $button-color-active;
-        background-color: $button-background-active;
-    }
+  &:active {
+    background-color: $midnight-blue;
+    border-color: $midnight-blue;
+    outline-color: $midnight-blue;
+  }
 }
 
 // content box
 %content-box {
-    background-color: $color-white;
-    border: 1px solid rgba($color-border-light, 0.5);
+  background-color: $color-white;
+  border: 1px solid rgba($color-border-light, 0.5);
 }
-
-/* /partials */

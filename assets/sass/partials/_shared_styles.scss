@@ -58,6 +58,7 @@ body {
 	font-family: $font-normal;
 	font-weight: 300;
 	color: $color-text;
+  transition: padding 250ms ease;
 }
 
 p,
@@ -116,3 +117,15 @@ li {
 }
 
 /* /general page styles */
+
+@media only screen and (max-width: $breakpoint-medium) {
+  body {
+    padding: em(40) em(25);
+  }
+}
+
+// @media only screen and (max-width: $breakpoint-small) {
+//   .projects-list {
+//     column-count: 1;
+//   }
+// }
