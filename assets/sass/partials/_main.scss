@@ -1,13 +1,36 @@
 // main / dynamic container
 .main-container {
 	$mainPadding: (30px / 900px) * 100%;
-	@extend .clearfix;
 
-	min-height: em(400);
+  @extend .clearfix;
 	padding: 0 $mainPadding;
+
+  // root page behavior
+  .root & {
+    padding: 0;
+    min-width: 845px;
+    max-width: 1000px;
+  }
 }
 
+// media queries
 @media only screen and (max-width: $breakpoint-medium) {
+  .main-container {
+    padding: 0;
+
+    .root & {
+      min-width: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-small) {
+  .main-container.main-container { // doubling specificity
+    padding: 0 1.5em;
+  }
+}
+
+@media print {
   .main-container {
     padding: 0;
   }

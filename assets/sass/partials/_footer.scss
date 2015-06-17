@@ -6,10 +6,16 @@ footer {
     display: none;
   }
 
+  a {
+    text-decoration: underline;
+  }
+
   section {
     display: inline-block;
     padding: 0 1em;
-    border-left: 1px solid $color-border-light;
+    border-style: solid;
+    border-color: $color-border-light;
+    border-width: 0 0 0 1px;
 
     &:first-child {
       border-left: none;
@@ -20,5 +26,50 @@ footer {
     .loading & {
       display: none;
     }
+  }
+}
+
+// media queries
+@media only screen and (max-width: $breakpoint-medium) {
+  footer {
+    section {
+      width: 50%;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+
+      &:first-child,
+      &:nth-child(2) {
+        border-width: 0 0 1px 1px;
+      }
+
+      &:nth-child(3) {
+        border-left: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-small) {
+  footer {
+    section {
+      width: 90%;
+      margin: 0 auto;
+      padding: 0.5em 0;
+
+      &,
+      &:nth-child(2) {
+        border-width: 1px 0 0 0;
+      }
+
+      &:first-child {
+        border-width: 0;
+      }
+    }
+  }
+}
+
+@media print {
+  footer {
+    display: none;
   }
 }

@@ -1,26 +1,20 @@
-.main-container {
-	.root & {
-		padding: 0;
-	}
-}
-
 // root page welcome text
 .welcome-text {
 	position: relative;
 	float: right;
 	max-width: 45%;
-	min-width: 365px;
 	font-size: 1.8em;
 
 	p:last-child {
+		position: relative;
 		max-width: 75%;
 
 		&:after {
 		  content: '\2935';
 		  font-size: 2em;
 		  position: absolute;
-		  bottom: -0.3em;
-			right: 1.3em;
+		  top: 1.15em;
+			left: 102%;
 			transform-origin: top left;
 			animation: arrow-grow 500ms ease 3000ms 6 alternate;
 		}
@@ -36,3 +30,38 @@
   	transform: scale(1.15) rotate(7deg);
   }
 }
+
+// media queries
+@media only screen and (max-width: $breakpoint-medium) {
+	.welcome-text {
+		float: none;
+		max-width: 100%;
+		margin-top: 10.5em;
+
+		p:last-child {
+			&:after {
+			  top: 0.55em;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: $breakpoint-small) {
+	.welcome-text {
+		margin-top: 10em;
+		font-size: 1.5em;
+
+		p:last-child {
+			max-width: none;
+
+			&:after {
+			  content: none;
+			  display: none;
+			}
+		}
+	}
+}
+
+// @media print {
+
+// }

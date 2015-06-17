@@ -30,7 +30,6 @@
 .download-button {
 	@extend %cta;
 
-	// width: 48%;
 	padding-left: 0;
 	padding-right: 0;
 	font-size: 1.2em;
@@ -72,6 +71,14 @@
 			font-weight: bold;
 		}
 	}
+
+	a {
+		display: inline-block;
+	  width: 100%;
+	  overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
 }
 
 .education-degree-year,
@@ -103,4 +110,50 @@
 
 .job-achievements-title {
 	margin-bottom: 0.25em;
+}
+
+// media queries
+// @media only screen and (max-width: $breakpoint-medium) {
+// }
+
+@media only screen and (max-width: $breakpoint-small) {
+	.resume-column-left,
+	.resume-column-right {
+		float: none;
+		width: 100%;
+	}
+
+	.resume-column-left {
+		margin-bottom: 1em;
+		padding-right: 0;
+	}
+}
+
+@media print {
+	.resume-column-left {
+	  padding-right: 2em;
+	}
+
+	.resume-section.resume-section { // doubling specificity
+		margin-top: 2em;
+		padding: 0;
+		border: none;
+
+		&:first-child,
+		&.meta {
+			margin-top: 0;
+		}
+	}
+
+	.print-download-buttons {
+		display: none;
+	}
+
+	.resume-meta-list {
+		dd {
+			&:first-of-type {
+				  font-size: 2em;
+			}
+		}
+	}
 }

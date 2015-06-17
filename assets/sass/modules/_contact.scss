@@ -185,3 +185,24 @@
 	  margin-top: em(15);
 	}
 }
+
+// media queries
+// @media only screen and (max-width: $breakpoint-medium) {
+
+// }
+
+@media only screen and (max-width: $breakpoint-small) {
+	.social-media-container,
+	.form-container {
+		float: none;
+		width: 100%;
+	}
+
+	.social-media-container {
+		margin-bottom: 3em;
+	}
+}
+
+// @media print {
+
+// }
