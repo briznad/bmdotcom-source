@@ -127,6 +127,16 @@ header {
 		background-color: rgba($color-black, 0.35);
 		transition-duration: 0s;
 	}
+
+	&,
+	.mobile-home-link {
+		.root &.mobile-home-link,
+		.projects &.projects-link,
+		.resume &.resume-link,
+		.contact &.contact-link {
+			cursor: default;
+		}
+	}
 }
 
 // name tag

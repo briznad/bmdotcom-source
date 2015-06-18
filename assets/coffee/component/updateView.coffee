@@ -28,6 +28,9 @@ bmdotcom.updateView = do ->
       console.debug 'Requested page is the same as the current page. Request denied.'
       return false
 
+    # close mobile nav menu when loading a new resource
+    bmdotcom.cache.$mobileNavTrigger.prop 'checked', false
+
     # determine the current page object
     currentPage = bmdotcom.model.pages[pageTitle]
 
@@ -67,14 +70,14 @@ bmdotcom.updateView = do ->
     bmdotcom.cache.$body.off '.' + previousPage
 
     switch pageTitle
-      when 'root'
-        x = 1
+      # when 'root'
+        #
 
       when 'contact'
         do bmdotcom.contact.registerEvents
 
-      else
-        x = 3
+      # else
+        #
 
   _initThumbnails = ->
 

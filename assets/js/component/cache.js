@@ -9,5 +9,6 @@ bmdotcom.cache = {
   $body: $(document.body),
   $title: $('title'),
   $h1: $('h1'),
-  $dynamicContainer: $('#dynamicContainer')
+  $dynamicContainer: $('#dynamicContainer'),
+  $mobileNavTrigger: $('#mobileNavTrigger')
 };

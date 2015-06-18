@@ -23,6 +23,7 @@ bmdotcom.updateView = (function() {
       console.debug('Requested page is the same as the current page. Request denied.');
       return false;
     }
+    bmdotcom.cache.$mobileNavTrigger.prop('checked', false);
     currentPage = bmdotcom.model.pages[pageTitle];
     _updateBodyClasses(pageTitle);
     _updateCurrentPage(pageTitle);
@@ -49,15 +50,10 @@ bmdotcom.updateView = (function() {
     }
   };
   _initEvents = function(pageTitle, previousPage) {
-    var x;
     bmdotcom.cache.$body.off('.' + previousPage);
     switch (pageTitle) {
-      case 'root':
-        return x = 1;
       case 'contact':
         return bmdotcom.contact.registerEvents();
-      default:
-        return x = 3;
     }
   };
   _initThumbnails = function() {};

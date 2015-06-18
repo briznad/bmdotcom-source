@@ -10,3 +10,4 @@ bmdotcom.cache =
   $title            : $('title')
   $h1               : $('h1')
   $dynamicContainer : $('#dynamicContainer')
+  $mobileNavTrigger : $('#mobileNavTrigger')
