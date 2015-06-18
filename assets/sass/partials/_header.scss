@@ -54,15 +54,8 @@ header {
 	}
 }
 
-.main-nav,
-.name-tag-wrapper,
-.name-tag-wrapper:after,
-.name-tag,
-.name-tag-header {
-	backface-visibility: hidden;
-}
-
 .main-nav {
+	@extend %hide-backface-visibility;
 	transition: transform 400ms ease;
 
 	.root & {
@@ -141,11 +134,11 @@ header {
 
 // name tag
 .name-tag-wrapper {
+	@extend %hide-backface-visibility;
 	position: absolute;
 	transition-properties: transform, opacity;
 	transition-duration: 500ms;
 	transition-timing-function: ease;
-
 	transform-origin: top left;
 	transform: scale(0.35) translateX(-144px) translateY(-266px) rotate(-24deg);
 
@@ -154,6 +147,7 @@ header {
 	}
 
 	&:after {
+		@extend %hide-backface-visibility;
 		content: '';
 	  width: 70%;
 	  height: 50%;
@@ -175,6 +169,7 @@ header {
 }
 
 .name-tag {
+	@extend %hide-backface-visibility;
 	display: block;
 	width: 420px;
 	height: 280px;
@@ -216,6 +211,7 @@ header {
 }
 
 .name-tag-header {
+	@extend %hide-backface-visibility;
 	text-align: center;
 	line-height: 160px;
 	font-size: 4.5em;
@@ -223,10 +219,11 @@ header {
 	white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
-  text-indent: 35px;
+  text-indent: 20px;
   transform: scale(1.004);
 
   span {
+  	@extend %hide-backface-visibility;
   	display: block;
   	transform: rotate(2deg);
   }
@@ -253,6 +250,12 @@ header {
 		}
 	}
 
+	.name-tag-header {
+		span {
+	  	transform: scale(0.9) rotate(2deg);
+	  }
+	}
+
 	.main-nav-link {
 		font-size: 1.3em;
 	}
@@ -266,6 +269,26 @@ header {
 
 	header {
 	  margin-bottom: 4.5em;
+
+	  &:after {
+		  position: absolute;
+		  bottom: -1.7em;
+		  left: 0.7em;
+		  font-size: 2em;
+		  font-weight: bold;
+
+		  .contact & {
+		  	content: 'Contact';
+		  }
+
+		  .resume & {
+		  	content: 'Resume';
+		  }
+
+		  .projects & {
+		  	content: 'Projects';
+		  }
+		}
 	}
 
 	.main-nav {
