@@ -113,7 +113,7 @@ bmdotcom.modelBuildr = (function() {
         },
         website: 'http://bradmallow.com'
       },
-      summary: 'I am passionate​ about technology, web services, and the opportunities provided by the open web application stack. I look forward to finding a position where I can utilize my skills, both technical and personal, to build great products while continuing to challenge myself and grow professionally.',
+      summary: 'I’ve been developing websites and web applications for over 15 years and am passionate about exposing complicated information through simple, thoughtful interfaces. I look forward to my next opportunity to challenge myself and utilize my skills, both technical and personal, to build great products and foster great teams.',
       education: [
         {
           school: 'University of California, Santa Cruz',
@@ -124,12 +124,22 @@ bmdotcom.modelBuildr = (function() {
           graduationYear: '2006'
         }
       ],
-      skills: ['HTML/5', 'CSS/3', 'JavaScript', 'performance optimization', 'web accessibility'],
+      skills: ['HTML', 'CSS', 'JavaScript', 'PHP', 'node.js', 'performance optimization', 'web accessibility'],
       experience: [
         {
+          title: 'Senior Interface Developer',
+          organization: 'Thrillist Media Group',
+          location: 'New York, New York',
+          period: {
+            start: 'July 2013',
+            end: 'May 2015'
+          },
+          description: 'I worked closesly with design and product teams to develop modules and features across multiple editorial and eccomerce sites built upon Thrillist’s proprietary web application platform. As a senior member of the team I advocated a high standard of code quality and maintainability through active involvement in code reviews, and was also tasked with deploying code to production systems.',
+          achievements: ['Led a special projects team of developers tasked with originating ideas around strategic company objectives and developing them into production-ready solutions.', 'Designed, prototyped, and implemented internal curation tools, providing editorial and merchandising teams granular control over content and sale item placement through an intuitive interface.', 'Built the corporate identity site (http://thrillistmediagroup.com) making use of CSS animation and transitions to spice up the usual advertising, executives, career, and tech blog sections.']
+        }, {
           title: 'Frontend Developer',
           organization: 'Intuit',
-          location: 'San Francisco, California',
+          location: 'Menlo Park, California',
           period: {
             start: 'February 2012',
             end: 'March 2013'

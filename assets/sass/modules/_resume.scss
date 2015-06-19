@@ -90,9 +90,21 @@
 .skill-list-item,
 .job-achievements-list-item {
 	display: list-item;
+	position: relative;
+	list-style-type: none;
 	margin-left: 1.5em;
-	list-style-type: square;
   line-height: 1.5em;
+
+  &:before {
+		content: '';
+		display: block;
+	  position: absolute;
+	  width: 5px;
+	  height: 5px;
+	  top: 0.65em;
+	  left: -1.1em;
+	  background-color: $asbestos;
+	}
 }
 
 .experience-list-item {
@@ -110,6 +122,7 @@
 
 .job-achievements-title {
 	margin-bottom: 0.25em;
+	font-weight: normal;
 }
 
 // media queries
@@ -154,6 +167,15 @@
 			&:first-of-type {
 				  font-size: 2em;
 			}
+		}
+	}
+
+	.skill-list-item,
+	.job-achievements-list-item {
+		list-style-type: square;
+
+		&:before {
+			content: none;
 		}
 	}
 }
