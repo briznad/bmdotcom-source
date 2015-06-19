@@ -1,5 +1,9 @@
 footer {
-  margin-top: em(40);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: em(50) em(50) em(60);
   text-align: center;
 
   .root & {
@@ -32,6 +36,8 @@ footer {
 // media queries
 @media only screen and (max-width: $breakpoint-medium) {
   footer {
+    padding: 1.5em;
+
     section {
       width: 50%;
       padding-top: 0.5em;
@@ -52,8 +58,7 @@ footer {
 @media only screen and (max-width: $breakpoint-small) {
   footer {
     section {
-      width: 90%;
-      margin: 0 auto;
+      width: 100%;
       padding: 0.5em 0;
 
       &,

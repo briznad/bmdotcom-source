@@ -101,16 +101,15 @@
 	[type="email"],
 	textarea {
 		@extend %input-focus;
-	}
-
-	[type="text"],
-	[type="email"],
-	textarea {
 		@extend %content-box;
 		display: block;
 		width: 100%;
 		padding: 1em 0.75em 0.5em;
 		font-size: 1.5em;
+
+		// remove safari's rounded corners and inset box shadow
+		border-radius: 0;
+		-webkit-appearance: none;
 
 		// automatically put a red asterisk next to any reqired field label
 		&[required] {
