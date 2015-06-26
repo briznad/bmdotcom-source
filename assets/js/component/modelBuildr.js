@@ -113,7 +113,7 @@ bmdotcom.modelBuildr = (function() {
         },
         website: 'http://bradmallow.com'
       },
-      summary: 'I’ve been developing websites and web applications for over 15 years and am passionate about exposing complicated information through simple, thoughtful interfaces. I look forward to my next opportunity to challenge myself and utilize my skills, both technical and personal, to build great products and foster great teams.',
+      summary: 'I am a frontend developer with over 15 years experience developing websites and web applications. I am passionate about exposing complicated information through simple, thoughtful interfaces. I look forward to my next opportunity to utilize my skills, both technical and personal, to build great products and foster great teams.',
       education: [
         {
           school: 'University of California, Santa Cruz',
@@ -134,8 +134,8 @@ bmdotcom.modelBuildr = (function() {
             start: 'July 2013',
             end: 'May 2015'
           },
-          description: 'I worked closesly with design and product teams to develop modules and features across multiple editorial and eccomerce sites built upon Thrillist’s proprietary web application platform. As a senior member of the team I advocated a high standard of code quality and maintainability through active involvement in code reviews, and was also tasked with deploying code to production systems.',
-          achievements: ['Led a special projects team of developers tasked with originating ideas around strategic company objectives and developing them into production-ready solutions.', 'Designed, prototyped, and implemented internal curation tools, providing editorial and merchandising teams granular control over content and sale item placement through an intuitive interface.', 'Built the corporate identity site (http://thrillistmediagroup.com) making use of CSS animation and transitions to spice up the usual advertising, executives, career, and tech blog sections.']
+          description: 'I developed modules and features in close collaboration with design and product teams, used across multiple editorial and eccomerce sites built upon Thrillist’s proprietary web application platform. As a senior member of the team I advocated a high standard of code quality and maintainability through active involvement in code reviews, and was also tasked with deploying code to production systems.',
+          achievements: ['Led a special projects team of developers tasked with originating ideas around strategic company objectives and developing them into production-ready solutions.', 'Designed, prototyped, and implemented internal curation tools, providing editorial and merchandising teams granular control over content placement through an intuitive interface.', 'Built the corporate identity site (http://thrillistmediagroup.com) making use of CSS animation and transitions to spice up the usual advertising, executives, career, and tech blog sections.']
         }, {
           title: 'Frontend Developer',
           organization: 'Intuit',
