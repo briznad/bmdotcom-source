@@ -113,7 +113,7 @@ bmdotcom.modelBuildr = (function() {
         },
         website: 'http://bradmallow.com'
       },
-      summary: 'I am a frontend developer with over 15 years experience developing websites and web applications. I am passionate about exposing complicated information through simple, thoughtful interfaces. I look forward to my next opportunity to utilize my skills, both technical and personal, to build great products and foster great teams.',
+      summary: 'I am a frontend developer with over 15 years experience developing websites and web applications. I am passionate about exposing complicated information through simple, thoughtful interfaces. I look forward to my next opportunity to utilize my skills, both technical and personal, to build quality products and foster great teams.',
       education: [
         {
           school: 'University of California, Santa Cruz',
