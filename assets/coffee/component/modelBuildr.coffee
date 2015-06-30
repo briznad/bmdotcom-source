@@ -218,7 +218,7 @@ bmdotcom.modelBuildr = do ->
         period       :
           start : 'July 2013'
           end   : 'May 2015'
-        description  : 'I developed modules and features in close collaboration with design and product teams, used across multiple editorial and eccomerce sites built upon Thrillist’s proprietary web application platform. As a senior member of the team I advocated a high standard of code quality and maintainability through active involvement in code reviews, and was also tasked with deploying code to production systems.'
+        description  : 'I developed modules and features in close collaboration with design and product teams, used across multiple editorial and ecommerce sites built upon Thrillist’s proprietary web application platform. As a senior member of the team I advocated a high standard of code quality and maintainability through active involvement in code reviews, and was also tasked with deploying code to production systems.'
         achievements : [
           'Led a special projects team of developers tasked with originating ideas around strategic company objectives and developing them into production-ready solutions.'
           'Designed, prototyped, and implemented internal curation tools, providing editorial and merchandising teams granular control over content placement through an intuitive interface.'
