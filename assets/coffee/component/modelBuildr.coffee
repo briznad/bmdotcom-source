@@ -30,6 +30,7 @@ bmdotcom.modelBuildr = do ->
         keywords    : [
           'HTML/CSS/JS'
           'CSS3'
+          'HTML5'
           'SASS'
           'blog'
         ]
