@@ -23,6 +23,35 @@ bmdotcom.modelBuildr = do ->
   _addProjectsModel = ->
     [
       {
+        title       : 'Thrillist Media Group'
+        link        : 'http://www.thrillistmediagroup.com/'
+        media       : 'TMG_sample.png'
+        description : 'I built the corporate identity site for Thrillist Media Group, making use of CSS animation and transitions to spice up the usual advertising, executives, career, and tech blog sections.'
+        keywords    : [
+          'HTML/CSS/JS'
+          'CSS3'
+          'SASS'
+          'blog'
+        ]
+      }
+      {
+        title       : 'aWindowNYC'
+        link        : 'http://www.awindownyc.com/'
+        media       : 'awindow_sample.png'
+        description : 'Serving as the purchasing and information portal for an experimental retail concept, I built a website upon a custom frontend js framework, utilizing Google Docs as a lightweight CMS, and with full purchase funnel but requiring no costly backend servers.'
+        keywords    : [
+          'HTML/CSS/JS'
+          'CSS3'
+          'HTML5'
+          'SASS'
+          'Davis.js'
+          'ecommerce'
+          'Stripe'
+          'Google Docs API'
+          'Grunt'
+        ]
+      }
+      {
         title       : 'shapeDance'
         link        : 'http://shapedance.beautifuluniquesnowflake.com/'
         media       : 'shapeDance_sample.png'
@@ -65,7 +94,7 @@ bmdotcom.modelBuildr = do ->
         title       : 'Intuit QuickNav'
         link        : 'http://www.intuit.com/'
         media       : 'Intuit_QuickNav_sample.png'
-        description : 'Replacing what was previously bulky and overly-complex, I developed a new header used across Intuit.com. With speed a high priority, I worked closely with the Intuit design team to move away from cross-browser "pixel perfection". Instead we took advantage of CSS3 to enhance the visual design, while making sure older browsers still enjoyed a completely usable experience; a first for Intuit.'
+        description : 'Replacing what was previously bulky and overly-complex, I developed a new header used across Intuit.com. With speed a high priority, I worked closely with the Intuit design team to move away from cross-browser "pixel perfection". Instead we took advantage of CSS3 to progressively enhance the visual design, while making sure older browsers still enjoyed a completely usable experience; a first for Intuit.'
         keywords    : [
           'HTML/CSS/JS'
           'CSS3'
