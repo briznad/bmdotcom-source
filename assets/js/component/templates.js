@@ -101,7 +101,7 @@ this["bmdotcom"]["templates"]["rootView"] = function (obj) {
             __p += __j.call(arguments, '');
         };
     with(obj || {}) {
-        __p += '<article class="welcome-text">\n  <p>I\'m a <strong>Frontend Developer</strong> who is passionionate about seamless UX, with experience spanning industries and product categories.</p>\n  <p><strong>Get in touch</strong> if you\'d like to build something together.</p>\n  <aside class="pointing-arrow" aria-hidden="true"></aside>\n</article>';
+        __p += '<article class="welcome-text">\n  <p>I\'m a <strong>Frontend Developer</strong> who is passionate about seamless UX, with experience spanning industries and product categories.</p>\n  <p><strong>Get in touch</strong> if you\'d like to build something together.</p>\n  <aside class="pointing-arrow" aria-hidden="true"></aside>\n</article>';
     }
     return __p;
 };
