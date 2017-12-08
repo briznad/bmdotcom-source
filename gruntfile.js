@@ -189,6 +189,7 @@ module.exports = function(grunt) {
 
         jshint: {
             options: {
+                reporterOutput: '',
                 evil: true,
                 boss: true,
                 browser: true,

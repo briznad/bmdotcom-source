@@ -72,6 +72,10 @@ this["bmdotcom"]["templates"]["resumeView"] = function (obj) {
         _.each(currentPage.skills, function (skill) {
             __p += '\n          <li class="skill-list-item">' + ((__t = (skill)) == null ? '' : __t) + '</li>\n        ';
         });
+        __p += '\n      </ul>\n    </section>\n\n    <section class="resume-section tools">\n      <h2 class="resume-section-header">My Tools</h2>\n\n      <ul class="tools-list">\n        ';
+        _.each(currentPage.tools, function (tools) {
+            __p += '\n          <li class="tools-list-item">' + ((__t = (tools)) == null ? '' : __t) + '</li>\n        ';
+        });
         __p += '\n      </ul>\n    </section>\n  </div>\n\n  <div class="resume-column-right">\n    <section class="resume-section experience">\n      <h2 class="resume-section-header">Professional Experience</h2>\n\n      <ul class="experience-list">\n        ';
         _.each(currentPage.experience, function (job) {
             __p += '\n          <li itemscope itemprop="worksFor" itemtype="http://schema.org/Organization" class="experience-list-item">\n            <h3>' + ((__t = (job.title)) == null ? '' : __t) + ', <span itemprop="name">' + ((__t = (job.organization)) == null ? '' : __t) + '</span></h3>\n\n            <span class="job-location-period">\n              ';
