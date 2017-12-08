@@ -11,9 +11,6 @@ bmdotcom.updateView = do ->
     elapsedTime = Math.floor(new Date()) - bmdotcom.loadTime
     remainingDelay = if elapsedTime < desiredDelay then desiredDelay - elapsedTime else 0
 
-    # print render time in the footer
-    $('#timingInfo').text((elapsedTime / 1000).toFixed(2))
-
     # remove loading class from html element
     t = setTimeout ->
       bmdotcom.cache.$html.removeClass('loading')

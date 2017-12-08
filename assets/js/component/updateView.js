@@ -11,7 +11,6 @@ bmdotcom.updateView = (function() {
     desiredDelay = 1250;
     elapsedTime = Math.floor(new Date()) - bmdotcom.loadTime;
     remainingDelay = elapsedTime < desiredDelay ? desiredDelay - elapsedTime : 0;
-    $('#timingInfo').text((elapsedTime / 1000).toFixed(2));
     return t = setTimeout(function() {
       return bmdotcom.cache.$html.removeClass('loading');
     }, remainingDelay);
