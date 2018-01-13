@@ -251,8 +251,8 @@ bmdotcom.modelBuildr = do ->
         organization : 'Poppin'
         location     : 'New York, New York'
         period       :
-          start : 'August 2016'
-          end   : 'August 2017'
+          start : 'August 2015'
+          end   : 'August 2016'
         description  : 'I ran the frontend ecom system and oversaw a successful replatforming. Transitioned to managing entire tech team, consisting of on-site and offshore team members, handling all technical needs of a rapidly growing startup selling physical goods to both B2B & B2C customers. This included ecom, ERP, sales management, and middleware systems to make it all work.'
         achievements : [
           'Completed a successful replatforming from an aging system that was inhibiting growth to a modern, full-feautured ecom solution.'
