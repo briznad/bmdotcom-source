@@ -20,7 +20,7 @@ bmdotcom.modal = (function() {
     options = _.extend(options, opts || {}, {
       modalID: _.uniqueId('modal-')
     });
-    bmdotcom.cache.$body.append(bmdotcom.template.modalView({
+    bmdotcom.cache.$body.append(bmdotcom.templates.modalView({
       modalID: options.modalID,
       modalContent: content,
       additionalClasses: _.isArray(options.additionalClasses) ? options.additionalClasses.join(' ') : options.additionalClasses,

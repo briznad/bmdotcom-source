@@ -17,7 +17,7 @@ bmdotcom.modal = do ->
     options = _.extend options, opts or {},
       modalID: _.uniqueId 'modal-'
 
-    bmdotcom.cache.$body.append bmdotcom.template.modalView
+    bmdotcom.cache.$body.append bmdotcom.templates.modalView
       modalID           : options.modalID
       modalContent      : content
       additionalClasses : if _.isArray(options.additionalClasses) then options.additionalClasses.join(' ') else options.additionalClasses
