@@ -10,18 +10,18 @@
   }
 }
 
-%icon-twitter {
-  &:before { content: '\e800'; } // ''
-}
-
-%icon-facebook {
-  &:before { content: '\e801'; } // ''
-}
-
-%icon-instagram {
-  &:before { content: '\e802'; } // ''
-}
-
 %icon-cancel {
-  &:before { content: '\e803'; } /* '' */
+  &:before { content: '\e800'; }
+}
+
+%icon-github {
+  &:before { content: '\e801'; }
+}
+
+%icon-stack-overflow {
+  &:before { content: '\e802'; }
+}
+
+%icon-twitter {
+  &:before { content: '\e803'; }
 }
