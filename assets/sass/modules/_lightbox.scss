@@ -46,7 +46,7 @@
   top: -16px;
   right: -16px;
   display: block;
-  width: 30px;
+  width: 31px;
   line-height: 26px;
   border: 2px solid $color-white;
   border-radius: 50%;
@@ -54,6 +54,10 @@
   background-color: $color-black;
   color: $color-white;
   font-size: 20px;
+
+  &:before {
+    line-height: 25px;
+  }
 
   &:hover {
     text-decoration: none;
