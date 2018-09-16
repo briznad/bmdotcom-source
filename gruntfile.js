@@ -16,10 +16,10 @@ module.exports = function(grunt) {
             sassInput: 'assets/sass/',
             coffeeInput: 'assets/coffee/',
             jsRawIO: 'assets/js/',
-            cssOutput: '_site/assets/css/',
-            jsOutput: '_site/assets/js/',
+            cssOutput: 'docs/assets/css/',
+            jsOutput: 'docs/assets/js/',
             htmlInput: 'assets/html/',
-            htmlOutput: '_site/',
+            htmlOutput: 'docs/',
             bower: 'bower_components/'
         },
 
